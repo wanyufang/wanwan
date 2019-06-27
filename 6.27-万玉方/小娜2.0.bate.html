@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    /*
+    小娜的功能
+         1.循环弹框询问输入
+         2.输入q退出循环
+         3.输入1或者是总和，就可以输入一串以逗号隔开的数字，然后求和
+         4.输入2或者是时间，可以得到固定格式的当前时间
+         5.输入3或者是笑话，可以随机的获得一个笑话
+         6.如果输入的不满足条件，会弹出提示
+     */
+    //  第一个函数的封装 - 判断小于十补全0的封装
+    function patchZero(number) {
+        if (number < 10) {
+            number = '0' + number;
+        }
+        return number;
+    }
+    // 第二个函数封装 - 获得一个固定二格式的时间
+    function formatDate() {
+        var date = new Date();
+        var y = date.getFullYear();
+        var M = date.getMonth() + 1;
+        var d = date.getDate();
+        var h = date.getHours();
+        var m = date.getMinutes();
+        var s = date.getSeconds();
+        //给个位数加'0'
+        M = patchZero(M);
+        d = patchZero(d);
+        h = patchZero(h);
+        m = patchZero(m);
+        s = patchZero(s);
+        var time = y + '-' + M + '-' + d + ' ' + h + ':' + m + ':' + s;
+        return time;
+    }
+
+    // 求数组的和,先单独的封装 - 因为求数组的和,不仅仅实在小娜里面使用的,可以在别的地方也可以使用
+    function getSumFromArray(arr) {
+        var sum = 0;
+        for (var i = 0; i < arr.length; i++) {
+            sum += parseFloat(arr[i]);
+        }
+        return sum;
+    }
+    // 把处理输入1的逻辑,也可以封装成函数,可以把代码简化
+    function inputOne() {
+        var numbers = prompt('请输入用逗号分隔的数字');
+        // 切割
+        var arr = numbers.split(',');
+        var sum = getSumFromArray(arr);
+        return sum;
+    }
+    // 循环的弹窗输入 - while循环
+    while (true) {
+        // 1 弹出输入框
+        var msg = prompt('输入1求总和\n输入2求当前的时间\n输入3获得一个随机笑话');
+        // 2 判断输入的是不是q
+        if (msg == 'q') {
+            alert('退出');
+            break;
+        }
+        // 判断123
+        switch (msg) {
+            case '1':
+            case '总和':
+                var sum = inputOne();
+                alert(sum);
+                break;
+            case '2':
+            case '时间':
+                var time = formatDate();
+                alert(time);
+                break;
+            case '3':
+            case '笑话':
+                var jokes = [
+                    '笑话1',
+                    '笑话2',
+                    '笑话3',
+                    '笑话4',
+                    '笑话5',
+                    '笑话6',
+                ];
+                // 随机索引
+                var index = Math.floor(Math.random() * jokes.length);
+                alert(jokes[index]);
+                break;
+            default:
+                // 如果输入的没有上述的判断,就提示我不会
+                alert('我听不明白');
+                break;
+        }
+    }
+</script>
+
+</html>
