@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 面向开发的过程
+    function XiaoNa() {
+        // 小娜首页的显示
+        this.hint = function () {
+            var show = prompt('请输入一下的数字或者关键字\n输入1或者总和，可以求总和\n输入2或者时间，可以得到现在的时间\n输入3或者笑话，可以讲笑话，\n输入q退出');
+            return show;
+        }
+        // 1.计算总和
+        this.total = function () {
+            // 用户输入框
+            var numbers = prompt('请输入求和的数,以逗号隔开');
+            // 将字符串转化为字符串数组,存储在arr内
+            var arr = numbers.split(',');
+            // 求和
+            var sum = 0;
+            for (var i = 0; i < arr.length; i++) {
+                sum += parseFloat(arr[i]);
+            }
+            alert(sum);
+        }
+
+        // 2.获取日期
+        this.date = function () {
+            var dates = new Date();
+            var y = dates.getFullYear();
+            var M = dates.getMonth()+1;
+            var d = dates.getDate();
+            var h = dates.getHours();
+            var m = dates.getMinutes();
+            var s = dates.getSeconds();
+            // 给个位数前加'0'
+            M = M < 10 ? '0' + M : M;
+            d = d < 10 ? '0' + d : d;
+            h = h < 10 ? '0' + h : h;
+            m = m < 10 ? '0' + m : m;
+            s = s < 10 ? '0' + s : s;
+            //时间的格式设置
+            var time = y + '-' + M + '-' + d + ' ' + h + ':' + m + ':' + s;
+            alert(time);
+        }
+        // 3.笑话部分
+        this.getJoke = function() {
+            // 设置笑话集合
+            var joke = ['笑话1','笑话2','笑话3','笑话4','笑话5'];
+            // 设置随机数
+            var gather = Math.floor(Math.random()*joke.length);
+            alert(joke[gather]); 
+        }
+        // 小娜未解析
+        this.mistake = function() {
+            alert('小娜未解析,请输入正确数字或文字');
+
+        }
+    }
+
+
+
+
+    // 创建一个小娜的对象
+    var xiaona = new XiaoNa();
+    while (true) {
+        var show = xiaona.hint();
+        // 退出
+        if (show == 'q') {
+            break;
+        }
+        // 判断输入的是数字
+        switch (show) {
+            case '1':
+            case '总和':
+                //计算总和
+                xiaona.total();
+                break;
+            case '2': 
+            case '时间': 
+                xiaona.date();
+                break;
+            case '3':
+            case '笑话': 
+                xiaona.getJoke();
+                break;
+            default : 
+                xiaona.mistake();
+                break;
+        }
+
+
+    }
+</script>
+
+</html>
