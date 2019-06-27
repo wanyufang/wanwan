@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+
+    while (true) {
+        var hint = prompt('你好,我是小娜,你的语音助手~~~~~~~\n' +
+            '输入<编号>或<关键词>选择功能,输入q推出聊天\n' +
+            '1.计算<总和>\n' +
+            '2.获取<时间>\n' +
+            '3.讲个<笑话>\n');
+        if (hint === 'q') {
+            alert('你已经不爱小娜了吗?');
+            break;
+        }
+        switch (hint) {
+            case '1':
+            case '总和':
+                var numbers = prompt('请输入你要求和的数字,以逗号隔开,例:1,2,3,4');
+                var arr = numbers.split(',');
+
+                var sum = 0;
+                for (var i = 0; i < arr.length; i++) {
+                    sum += parseFloat(arr[i]);
+                }
+                alert('你要计算的总和计算出来了,是:' + sum);
+                break;
+
+            case '2':
+            case '时间':
+                function patchZero(number) {
+                    if (number < 10) {
+                        number = '0' + number;
+                    }
+                    return number;
+                }
+
+                function formatDate() {
+                    var date = new Date();
+                    var y = date.getFullYear();
+                    var M = date.getMonth();
+                    var d = date.getDate();
+                    var h = date.getHours();
+                    var m = date.getMinutes();
+                    var s = date.getSeconds();
+                    M = patchZero(m);
+                    d = patchZero(d);
+                    h = patchZero(h);
+                    m = patchZero(m);
+                    s = patchZero(s);
+                    var time = y + '-' + M + '-' + d + ' ' + h + ':' + m + ':' + s;
+                    return time;
+                }
+               
+                alert( formatDate ());
+                
+            case '3':
+            case '笑话':
+                var joke = ['1', '2', '3', '4', '5'];
+                var r = Math.floor(Math.random() * joke.length);
+                alert(joke[r]);
+                break;
+            default:
+                alert('您的话小娜没有听懂,请重新说一次');
+                break;
+        }
+    }
+</script>
+
+</html>

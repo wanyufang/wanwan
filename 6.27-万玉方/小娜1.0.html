@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  /*
+小娜这个项目里面，我们需要做的功能有哪些：
+  1.计算总和
+  2.获取时间
+  3.讲笑话
+  4.弹出一个输入框，让用户根据提示进行输入
+
+步骤：
+  1.弹出输入框 - 循环 - 未知循环多少次 - while循环
+  2.如果输入的是q，退出循环 - break
+  3.如果输入1 或者是 总和 
+    3.1 继续弹出一个输入框 ，让用户输入以逗号分隔的多个数字，然后求和
+    3.2 - 需要一个新的知识点，来支撑
+  4.如果输入2或者是时间 - 获取当前的时间，并且以固定格式输出 yyyy-MM-dd hh:mm:ss
+    4.1 Date 通过它可以获取年月日时分秒进行输出
+  5.如果输入3或者 笑话 - 随机一个笑话输出
+    5.1 用一个数组，把多个笑话存储起来
+    5.2 随机一个索引，根据索引把笑话获取出来吗，输出
+      需要一个新的知识点支撑
+  6，如果输入的是上述情况之外的字符，
+    弹出道歉，继续循环
+*/
+  while (true) {
+    var hint = prompt('你好,我是小娜,你的语音助手~~~~~~~\n' +
+      '输入<编号>或<关键词>选择功能,输入q推出聊天\n' +
+      '1.计算<总和>\n' +
+      '2.获取<时间>\n' +
+      '3.讲个<笑话>\n');
+    if (hint === 'q') {
+      alert('你已经不爱小娜了吗?');
+      break;
+    }
+    switch (hint) {
+      case '1': b
+      case '总和':
+        var numbers = prompt('请输入你要求和的数字,以逗号隔开,例: 1,2,3,4');
+        var arr = numbers.split(',')
+        var sum = 0;
+        for (var i = 0; i < arr.length; i++) {
+          sum += parseFloat(arr[i]);
+        }
+        alert('你要计算的总和计算出来了,是: ' + sum);
+        break;
+      case '2':
+      case '时间':
+        var date = new Date();
+        var year = date.getFullYear();
+        var month = date.getMonth() + 1;
+        var day = date.getDate();
+        var hour = date.getHours();
+        var minute = date.getMinutes();
+        var second = date.getSeconds();
+        if (month < 10) {
+          month = '0' + month;
+        }
+        if (day < 10) {
+          day = '0' + day;
+        }
+        if (hour < 10) {
+          hour = '0' + hour;
+        }
+        if (minute < 10) {
+          minute = '0' + minute;
+        }
+        second = second < 10 ? '0' + second : second;
+        var time = year + '-' + month + '-' + day + ' ' + hour + ':' + minute + ':' + minute + ':' + second;
+        alert('当前的时间是:' + time);
+        break;
+      case '3':
+      case '笑话':
+        var joke = ['1', '2', '3', '4', '5'];
+        var r = Math.floor(Math.random() * joke.length);
+        alert(joke[r]);
+        break;
+      default:
+        alert('您的话小娜没有听懂,请重新说一次');
+        break;
+    }
+  }
+</script>
+
+</html>
