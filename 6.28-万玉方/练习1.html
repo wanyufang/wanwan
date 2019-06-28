@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<!-- <body style="background-color: red"> -->
+    <!-- <input type="button" value="随机颜色" onclick="aa()"> -->
+</body>
+
+<script>
+    // // [1-10]
+    // var r = Math.random();
+    // r = r *10 +1;
+    // console.log(r);
+    // r=Math.floor(r);
+    // // console.log(r);
+
+
+    // // [10-20]
+    // var r = Math.random();
+    // r = r*11 + 10;
+
+
+    // // [n-m]
+    // var r = Math.floor(Math.random()*(m-n+1)+n);
+
+
+    // 随机颜色
+    // 1 生成三个随机整数
+    function randomInt(n, m) {
+        return Math.floor(Math.random() * (m - n + 1) + n);
+    }
+
+    // 封装一个可以获得随机颜色的函数
+    function randomColor() {
+        var r = randomInt(0, 255);
+        var g = randomInt(0, 255);
+        var b = randomInt(0, 255);
+        return 'rgb(' + r + ',' + g + ',' + b + ')';
+    }
+    console.log(randomColor());
+    // function  aa() {
+    //     document.body.style = "background-color:"+RadioNodeListColor()
+    // }
+
+    // 2 调用三此
+    // 3 拼接成rgb(红色,绿色,蓝色)
+</script>
+
+</html>
