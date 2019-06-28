@@ -7,8 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
 <body>
-<!-- <body style="background-color: red"> -->
     <!-- <input type="button" value="随机颜色" onclick="aa()"> -->
 </body>
 
@@ -32,24 +32,117 @@
 
     // 随机颜色
     // 1 生成三个随机整数
-    function randomInt(n, m) {
-        return Math.floor(Math.random() * (m - n + 1) + n);
-    }
-
-    // 封装一个可以获得随机颜色的函数
-    function randomColor() {
-        var r = randomInt(0, 255);
-        var g = randomInt(0, 255);
-        var b = randomInt(0, 255);
-        return 'rgb(' + r + ',' + g + ',' + b + ')';
-    }
-    console.log(randomColor());
-    // function  aa() {
-    //     document.body.style = "background-color:"+RadioNodeListColor()
+    // function randomInt(n, m) {
+    //     return Math.floor(Math.random() * (m - n + 1) + n);
     // }
 
-    // 2 调用三此
+    // // 封装一个可以获得随机颜色的函数
+    // function randomColor() {
+    //     var r = randomInt(0, 255);
+    //     var g = randomInt(0, 255);
+    //     var b = randomInt(0, 255);
+    //     return 'rgb(' + r + ',' + g + ',' + b + ')';
+    // }
+    // console.log(randomColor());
+    // function  aa() {
+    //     document.body.style.backgroundColor=randomColor();
+    // }
+
+    // 2 调用三次
     // 3 拼接成rgb(红色,绿色,蓝色)
+
+
+
+
+// Math.floor(x)
+// 方法的作用: 把一个数字向下取整;
+// 方法的参数: x 是一个数字;
+// 方法的返回值: 返回小于等于x的最近的一个整数;
+
+// Math.ceil(x)
+// 方法的作用: 向上取整;
+// 方法的参数: x 是一个数字;
+// 方法的返回值 : 大于等于x的最小的整数;
+
+// Math.round(x)
+// 作用: 把数字四舍五入;
+// 参数: x 是一个数字;
+// 返回值: 把数字四舍五入之后的整数;
+
+// abs/max/min 作业
+
+
+
+// Date对象的方法 
+// 作用: 获取跟时间相关的东西;
+
+// 先创建一个date对象:
+// var date = new Date();
+
+// 继续调用对象的方法或者属性完成自己的效果:
+// 获取年月日时分秒
+// getFullYear()
+// 作用: 得到时间对象里面的年份;
+// 参数: 无;
+// 返回值: 一个4位数的数字;
+// 用法: 
+// var date = new Date();
+// date.getFullYear();
+
+// 创建自定义的时间对象:
+// 活动的开始日期和结束时日期
+// new Date() 其实也是有参数的
+
+
+         // 第一种创建指定时间的用法
+// var date = new Date(年,月,日,时,分,秒)
+// 作用 : 创建指定日期的时间对象
+// 参数 : 每个参数都是可以省略的,省略之后,默认值是0
+// 年 - 指定的年份
+// 月 ..
+// 日 ..
+// 时 ..
+// 分 ..
+// 秒 ..
+// 返回值: 就是一个指定日期的对象
+
+// 有个活动再2019年7月1日开始,7月7日结束
+// var start = new Date(2019,6,1,8); //注意点 月份是从0开始的.
+// console.log(start);
+// var end = new Date(2019,6,7,23,59);
+// console.log(end);
+
+
+
+         // 第二个方式可以直接给定一个日期的字符串
+// var date = new Date('年-月-日 时:分:秒');
+// var start = new Date('2019-07-01 8:00:00');
+// console.log(start);
+
+// 如果要比较日期的大小
+// 我们如果要比较,把日期的总的毫秒数计算出来,再比较会好一点
+// date对象里面提供了一个获取聪1970年1月1日到指定日期的所经过的所有的毫秒数,把毫秒数计算出来,再做比较
+// 将时间转换为总的毫秒数
+// 1970年到指定时间所经过的毫秒数
+// var date= new Date();
+// console.log(date);
+// console.log(date.getTime());
+
+// var start = new Date('2019-07-01');
+// console.log(start.getTime());
+
+
+
+         // 第三个方式
+// var date = new Date(总毫秒数)
+
+
+// 格式化日期,得到一个指定格式的日期: yyyy-mm-dd hh:mm:ss;
+// 给一个指定的日期,算出距离现在有多少天,多少小时,多少分钟,多少秒.
+
+
+
+// 绝对值 Math.abs
 </script>
 
 </html>
