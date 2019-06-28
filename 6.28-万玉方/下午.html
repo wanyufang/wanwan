@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+
+
+<script>
+    // 把数组翻转
+    // 一.
+    // var arr = [1,2,3,4];
+    // var newArr = [];
+    // 把arr倒序遍历,把arr的最后一个作为新数组的第0个.
+    // for(var i = 3; i>=0; i--) {
+    //   1.  console.log(arr[i]);
+    // newArr[newArr.length]=arr[i];
+    // }
+    // console.log(newArr);
+
+    // 数组.push(元素)
+    //     作用: 把元素从数组的末尾添加
+    //     参数: 要放到数组末尾的元素,可以是多个
+
+    // 二.
+    // 把最后一个原色和第0个元素调换位置,把倒数第二个和顺数第二个调换,以此类推.
+    // 调换的次数是 : Math.floor(数组长度/2);
+
+    // 三.
+    // var arr = [1,2,3,4];
+    // arr.reverse(arr);
+    // console.log(arr);
+
+
+
+    数组的pop方法
+    排队
+    var arr = ['a','b','c','d'];
+    var last = arr.pop();
+    console.log(last);
+    console.log(arr);
+
+    shift-排队插队d
+    var arr = ['a','b','c','d'];
+    arr.unshift('e');
+    console.log(arr);
+    arr.shift();
+    console.log(arr);
+
+    数组的splice方法
+    数组.splice();
+        用户删除元素
+    var arr = ['a','b','c','d','e'];
+    数组.splice(从哪里开始删除,要删除多少个)
+    arr.splice(2,2);
+    console.log(arr);
+
+    把元素插入到数组的指定位置
+    var arr = ['a','b','c','d','e'];
+    数组.splice(从哪里开始插入,0,插入的元素1,元素2...)
+    arr.splice(3,0,5,7,9);
+    console.log(arr);
+
+    数组.splice(index,honwmany,element,)
+
+    遍历数组
+    数组.forEach(function(元素,索引));
+    只需要关注遍历的逻辑 不需要关注怎么遍历的.
+    var arr = [1,2,3,4,5];
+    var sum = 0;
+    var res = arr.forEach(function(e,i){
+        console.log(e);
+        console.log(i);
+    })
+
+    数组的筛选
+    作用: 从数组中筛选出满足条件的元素,用一个新的数字装起来
+    参数: 是一个函数,函数有两个形参,第一个代表每个元素,第二个代表索引
+    返回值: 是一个数组,里面有所有满足条件的元素
+    例:
+    筛选数组大于2000;
+    var arr = [3000,5000,50,100,3500];
+    var arr2=arr.filter(function(e,i){
+        return e>2000;
+    })
+    console.log(arr2);
+// </script>
+</html>
