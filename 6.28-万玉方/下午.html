@@ -1,14 +1,15 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
 <body>
-    
+
 </body>
 
 
@@ -39,56 +40,138 @@
 
 
 
-    数组的pop方法
-    排队
-    var arr = ['a','b','c','d'];
-    var last = arr.pop();
-    console.log(last);
-    console.log(arr);
+    // 数组的pop方法
+    // 排队
+    // var arr = ['a','b','c','d'];
+    // var last = arr.pop();
+    // console.log(last);
+    // console.log(arr);
 
-    shift-排队插队d
-    var arr = ['a','b','c','d'];
-    arr.unshift('e');
-    console.log(arr);
-    arr.shift();
-    console.log(arr);
+    // shift-排队插队d
+    // var arr = ['a','b','c','d'];
+    // arr.unshift('e');
+    // console.log(arr);
+    // arr.shift();
+    // console.log(arr);
 
-    数组的splice方法
-    数组.splice();
-        用户删除元素
-    var arr = ['a','b','c','d','e'];
-    数组.splice(从哪里开始删除,要删除多少个)
-    arr.splice(2,2);
-    console.log(arr);
+    // 数组的splice方法
+    // 数组.splice();
+    //     用户删除元素
+    // var arr = ['a','b','c','d','e'];
+    // 数组.splice(从哪里开始删除,要删除多少个)
+    // arr.splice(2,2);
+    // console.log(arr);
 
-    把元素插入到数组的指定位置
-    var arr = ['a','b','c','d','e'];
-    数组.splice(从哪里开始插入,0,插入的元素1,元素2...)
-    arr.splice(3,0,5,7,9);
-    console.log(arr);
+    // 把元素插入到数组的指定位置
+    // var arr = ['a','b','c','d','e'];
+    // 数组.splice(从哪里开始插入,0,插入的元素1,元素2...)
+    // arr.splice(3,0,5,7,9);
+    // console.log(arr);
+    // 数组.splice(index,honwmany,element,)
 
-    数组.splice(index,honwmany,element,)
 
-    遍历数组
-    数组.forEach(function(元素,索引));
-    只需要关注遍历的逻辑 不需要关注怎么遍历的.
-    var arr = [1,2,3,4,5];
-    var sum = 0;
-    var res = arr.forEach(function(e,i){
-        console.log(e);
-        console.log(i);
-    })
+    // 遍历数组
+    // 数组.forEach(function(元素,索引));
+    // 只需要关注遍历的逻辑 不需要关注怎么遍历的.
+    // var arr = [1,2,3,4,5];
+    // var sum = 0;
+    // var res = arr.forEach(function(e,i){
+    //     console.log(e);
+    //     console.log(i);
+    // })
 
-    数组的筛选
-    作用: 从数组中筛选出满足条件的元素,用一个新的数字装起来
-    参数: 是一个函数,函数有两个形参,第一个代表每个元素,第二个代表索引
-    返回值: 是一个数组,里面有所有满足条件的元素
-    例:
-    筛选数组大于2000;
-    var arr = [3000,5000,50,100,3500];
-    var arr2=arr.filter(function(e,i){
-        return e>2000;
-    })
-    console.log(arr2);
+    // 数组的筛选
+    // 作用: 从数组中筛选出满足条件的元素,用一个新的数字装起来
+    // 参数: 是一个函数,函数有两个形参,第一个代表每个元素,第二个代表索引
+    // 返回值: 是一个数组,里面有所有满足条件的元素
+    // 例:
+    // 筛选数组大于2000;
+    // var arr = [3000,5000,50,100,3500];
+    // var arr2=arr.filter(function(e,i){
+    //     return e>2000;
+    // })
+    // console.log(arr2);
+
+
+    // 我们之前在学习数据类型的时候,字符串是值类型
+    // 对象是引用类型,谁才有方法,对象
+    // 字符串,数字,布尔等这些简单类型,其实也是可以调用方法的
+    // 为什么值类型也能调用方法? - 万物皆对象
+    // 其实在js中,也有和数字,字符串,布尔对应的对象
+    // Number() -简单类型对应的构造函数
+    // String()
+    // Boolean()
+
+    // 本来值类型是不能调用方法的,但是JS在执行的郭城中会自己判断,这个值类型师傅拥有对应的构造函数,如果有,当我们使用值类型进行调用方法的时候,会做下面的这些事情
+    // 当值类型调用方法:
+    // 1.会先创建一个临时的对应类型的对象
+    // .toString()
+    // console.log('abc'.toString);
+    // console.log(true.toString);
+    // console.log((123).toString);
+
+    // 如果使用一个数字,调用方法
+    // (123).toString()
+
+    // 其实会有一个过程:
+    // var obj = new Number(123);
+    // obj.toString();
+    // obj = null;
+
+
+    // 字符串的常用方法
+    // split 
+    // 作用: 根据一个指定的分隔符,把一个字符串分割为数组
+    // var str = '张飞|刘备|关羽|狗蛋';
+    // var resArr = str.split('|');
+    // console.log(resArr);
+
+    // 为什么字符串之类的值类型也可以调用方法
+    // 因为js在发现我们的值类型调用方法的时候,会自动检测这个值类型师傅有对应的构造函数,如果有,会先创建一个临时对象,使用跟这个临时对象调用方法之后,再把对象销毁.
+
+    // 数组的join方法
+    // 作用: 把一个数组,用一个指定的分隔符,拼接成为一个字符串
+    // 参数: 就是一个指定的分隔符;
+    // 返回值: 
+    // var str = ['张飞','刘备','关羽','狗蛋'];
+    // var res = str.join('-');
+    // console.log(res);
+
+
+    // 字符串的indexOf方法
+    // 作用: 查找某个字符在一个字符串中的位置
+    // 参数: char 目标字符
+    //       formIndex 从哪里开始查找
+    // 返回值:整数
+    // var arr = 'adsfadfsdfas';
+    // var index = arr.indexOf('h');
+    // console.log(index);
+    // var i = arr.indexOf('c');
+    // console.log(i);
+    // // 如果不是-1,就是存在.
+
+    // // 看看d在字符串里面有多少个
+    // var ind = arr.indexOf('d',i+1);
+    // console.log(ind);
+
+
+    // 字符串的substring方法
+    // 字符串.substring();
+    // 作用: 用来截取字符串的一部分
+    // 参数: 
+    // start: 从哪里开始;
+    // end: 到哪里结束;
+    // var str = '0123456789';
+    // // 把里面的345拿出来   
+    // var res = str.substring(3,6);
+    // // 如果省略 则到字符串最末尾
+    // var res = str.substring(3);
+    // console.log(res);
+
+    // 错题集
+    // 1.代码拿过来
+    // 2.把报错或者错误的效果截图
+    // 3.翻译报错:例 未捕获的类型错误: 无法读取nul的属性'toString'
 // </script>
+
 </html>
