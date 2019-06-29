@@ -1,16 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
 <body>
-    
+
 </body>
 
 <script>
+    // 求1-10之间的随机整数
+    // var r = Math.random();
+    // r = r*10 +1;
+    // console.log(r);
+    // r = Math.floor(r);
+    // console.log(r);
+
+
+    // 求10-20之间的随机整数
+    // var r = Math.random();
+    // r = r *11 + 10;
+
+
+    // 求n-m之间的随机整数
+    // var r = Math.floor(Math.random()*(m-n+1)+n);
+
+
+    // 生成随机颜色
+    // 1.生成三个随机整数
+    // function randomInt(n, m) {
+    //     return Math.floor(Math.random() * (m - n + 1) + n);
+    // }
+    // // // 封装一个可以获得随机颜色的函数
+    // function randomColor() {
+    //     var r = randomInt(0, 255);
+    //     var g = randomInt(0, 255);
+    //     var b = randomInt(0, 255);
+    //     return 'rgb(' + r + ',' + g + ',' + b + ')';
+    // }
+    // console.log(randomColor());
+    // // // 将随机颜色的函数引用到页面内
+    // function aa() {
+    //     document.body.style.backgroundColor=randomColor();
+    // }
+    // aa();
+
+    // // Math.abs - 绝对值
+    // document.write(Math.abs(7.25) + "<br />")
+    // document.write(Math.abs(-7.25) + "<br />")
+    // document.write(Math.abs(7.25 - 10))
+
+    // // Math.max - 最大值
+    // document.write(Math.max(5, 7) + "<br />")
+    // document.write(Math.max(-3, 5) + "<br />")
+    // document.write(Math.max(-3, -5) + "<br />")
+    // document.write(Math.max(7.25, 7.30))
+
+    // // Math.min - 最小值
+    // document.write(Math.min(5, 7) + "<br />")
+    // document.write(Math.min(-3, 5) + "<br />")
+    // document.write(Math.min(-3, -5) + "<br />")
+    // document.write(Math.min(7.25, 7.30));
+
+
+    //Date对象的方法
+    // var date = new Date(); 
+    // date.getFullYear();
+    // console.log(date.getFullYear());
+
+    // 第一种创建时间的方法
+    // 月份要减一
+    // var date = new Date(2019,06,20,12,12,00)
+    // console.log(date);
+    // // 开始至结束
+    // var start = new Date(2019,6,1,8);
+    // console.log(start);
+    // var end = new Date(2019,6,7,23,59);
+    // console.log(end);
+
+    // 第二种创建时间的方法 - 直接给定一个日期的字符串
+    // var date = new Date('2019-5-20 8:00:00');
+    // console.log(date);
+    // var date = new Date('2019-07-01');
+    // console.log(date.getTime());
+    // console.log(date.valueOf());
+    
+    // 第三种创建时间的方法
+    // var date = new Date(总毫秒数);
+    // var date = new Date(10000000000);
+    // console.log(date);
+
+    // 格式化日期,得到一个指定格式的日期:yyyy-mm-dd hh:mm:ss;
+
+
+
+
     // 数组翻转
     // var arr = [1,2,3,4];
     // var newArr = [];
@@ -73,7 +161,18 @@
     // })
     // console.log(arr2);
 
-
+    // 当值类型调用方法:
+    // 1. 先创建一个临时的对应类型的对象
+    // console.log('abc'.toString);
+    // console.log(true.toString);
+    // console.log((123).toString);
+    // // 如果使用一个数字,调用方法
+    // (123).toString();
+    // // 其实会有一个过程:
+    // var obj = new Number(123);
+    // obj.toString();
+    // obj = null;
 
 </script>
+
 </html>
