@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body id="box">
+    <input type="button" value="关灯" id="btn-close">
+    <!-- <input type="button" value="开灯" id="btn-open"> -->
+    <!-- <input type="button" value="暖光" id="btn-nuan"> -->
+</body>
+
+
+<script>
+    // 获取按钮
+    // var btnClose = document.getElementById('btn-close');
+    // var btnOpen = document.getElementById('btn-open');
+    // // 注册点击事件
+    // btnClose.onclick = function () {
+    //     var body = document.getElementById('body');
+    //     body.style.backgroundColor = '#000';
+    // }
+    // btnOpen.onclick = function () {
+    //     var body = document.getElementById('body');
+    //     body.style.backgroundColor = '#fff';
+    // }
+
+
+    // var btnClose = document.getElementById('btn-close');
+    // var btnOpen = document.getElementById('btn-open');
+    // var btnNuan = document.getElementById('btn-nuan');
+    // // 公共使用的变量提取到函数的外面
+    // var body = document.getElementById('box');
+    // btnClose.onclick = function(){        
+    //     body.style.backgroundColor = '#000';
+    // }
+    // btnOpen.onclick = function(){       
+    //     body.style.backgroundColor = '#fff';
+    // }
+    // btnNuan.onclick = function(){        
+    //     body.style.backgroundColor = 'yellow';
+    // }
+
+
+
+    // 判断文字是开灯还是关灯,如果文字是关灯,就把body变黑,否则变白
+    // var btn = document.getElementById('btn-close');
+    // var body = document.getElementById('box');
+    // btn.onclick = function () {
+    //     if (btn.value === '关灯') {
+    //         document.body.style.backgroundColor = '#000';
+    //         btn.value = '开灯';
+    //     }
+    //     else {
+    //         document.body.style.backgroundColor = '#fff';
+    //         btn.value = '关灯';
+    //     }
+    // }
+
+
+    var btn = document.getElementById('btn-close');
+    var body = document.getElementById('box');
+    btn.onclick = function(){
+        if(btn.value==='关灯'){
+            document.body.style.backgroundColor = '#000';
+            btn.value = '开灯'
+        }
+        else{
+            document.body.style.backgroundColor = '#fff';
+            btn.value = '关灯';
+        }
+    }
+
+
+    // 开关思想
+    // 用某个特殊的条件作为一个状态表示, 如果只有两个状态, 就会来回切换
+    // 这个做法就是开关思想
+</script>
+
+</html>

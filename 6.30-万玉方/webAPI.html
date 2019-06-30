@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+
+
+<script>
+    // DOM和节点的概念
+    // DOM-就是把文档(页面)看成是一个对象,这个对象中有很多属性和方法,就是要学习这些属性和方法.
+
+    // 树形结构中,每个线条的交叉点都叫节点.
+    // 节点可以包含:元素,属性,文本....
+
+    DOM里面常干的是
+    1.获取元素
+    2.注册事件
+    3.在事件处理程序里面实现效果
+
+
+    根据id获取元素(最高效)
+    document.getElementById()
+    作用: 根据id获取元素
+    参数: id就是你要获取的元素的id
+    返回值: 元素对象或者null
+
+    事件
+    浏览器的一种 触发-响应 的处理机制
+    是浏览器用来和用户进行交互的一种办法
+    事件源.on事件类型 = 处理程序
+    document.getElementById('btn');
+    btn.onclick = function(){
+        alert('事件被触发案例');
+    }
+
+
+
+    根据标签名获取元素
+    根据类名获取元素
+    根据选择器获取元素
+</script>
+</html>
