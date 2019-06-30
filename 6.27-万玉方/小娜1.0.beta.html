@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    while (true) {
+        var hint = prompt("你好，我是传智小娜，你的语音助手~~~~~~~\n" +
+            "输入《编号》或《关键词》选择功能，输入q退出聊天\n" +
+            " 1.计算《总和》\n" +
+            " 2.获取《时间》\n" +
+            " 3.讲个《笑话》\n");
+        if (hint === 'q') {
+            alert('你不喜欢小娜了吗');
+            break;
+        }
+        switch (hint) {
+            case '1':
+            case '总和':
+                var numbers = prompt('请输入你要求和的数字，以逗号隔开，例如： 1,2,3,4');
+                var arr = numbers.split(',');
+                var sum = 0;
+                for (var i = 0; i < arr.length; i++) {
+                    sum += parseFloat(arr[i]);
+                }
+                alert('总和:' + sum);
+                break;
+            case '2':
+            case '时间':
+                var date = new Date();
+                var year = date.getFullYear();
+                var month = date.getMonth()+1;
+                var day = date.getDate();
+                var hour = date.getHours();
+                var minute = date.getMinutes();
+                var second = date.getSeconds();
+                if(month<10) {
+                    month= '0'+month;
+                };
+                if(day<10) {
+                    day='0'+day;
+                }
+                if(hour<10) {
+                    hour='0'+hour;
+                }
+        }
+    }
+
+</script>
+
+</html>
