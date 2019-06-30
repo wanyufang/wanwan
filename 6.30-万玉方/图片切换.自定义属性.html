@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            width: 50%;
+            height: 50%;
+            margin: 0 auto;
+            background-color:pink;
+        }
+        .box2 img {
+            width: 100%;
+        }
+    </style>  
+</head>
+
+<body>
+    <div class="aaa" title="一个div">
+        <!-- <a href="#" id="link">百度</a> -->
+        <input type="button" value="图片1" data-set="./images/timg.jpg">
+        <input type="button" value="图片2" data-set="./images/500fd9f9d72a60593cd8fb6e2034349b023bbafd.jpg">
+        <input type="button" value="图片3" data-set="./images/bg.jpg">
+        <input type="button" value="图片4" data-set="./images/ddd.jpg">
+        <input type="button" value="图片5" data-set="./images/wo.jpg">
+    </div> 
+    <div class="box2">
+        <img id="img">
+    </div>
+</body>
+
+
+
+<script>
+    // html里面有两种属性:
+    // 标准属性:
+    // 已经在html里面具有特殊作用的属性.
+    // 自定义属性: 
+    // 程序员自己为了在元素上面存储一个和他相关的数据而自己写的属性, 以date- 开头.
+    // 标准命名方式 date-自定义属性名=值.
+    // date-src
+    // 在js里面获取 元素对象.dateset.src
+
+    var img = document.getElementsByTagName('img')
+    // 使用for循环来实现
+    var btns = document.getElementsByTagName('input');
+    // console.log(btns);
+    for(var i= 0; i<btns.length;i++) {
+        btns[i].onclick = function(){
+            var srv = this.dataset.set;
+            img[0].src = srv;
+        }
+    }
+
+</script>
+
+</html>
