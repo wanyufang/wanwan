@@ -1,0 +1,373 @@
+<!-- 开关灯练习开始 -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        .box {
+            width: 600px;
+            height: 400px;
+            margin: 100px auto;
+            background-color: #ccc;
+            position: relative;
+        }
+        .box input {
+            position: absolute;
+            right: 0;
+        }
+        .box input:last-child {
+            top: 100px;
+        }
+        .bg-black {
+            background-color: #000;
+        }
+        .bg-white {
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <input type="button" value="关灯">
+        <input type="button" value="开灯">
+    </div>
+</body>
+
+
+
+<script>
+    var btn = document.querySelectorAll("input");
+    var body = document.body;
+    btn[0].onclick = function(){
+        body.className = 'bg-black';
+    }
+    btn[1].onclick = function(){
+        body.className = ('bg-white');
+    }
+</script>
+</html> -->
+
+<!-- 开关灯结束 -->
+
+
+
+<!-- 相册开始 -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            width: 50%;
+            margin: 0 auto;
+        }
+        .box2 img {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">
+        <input type="button" value="图片1" id="btn1">
+        <input type="button" value="图片2" id="btn2">
+        <input type="button" value="图片3" id="btn3">
+        <input type="button" value="图片4" id="btn4">
+        <input type="button" value="图片5" id="btn5">
+    </div>
+    <div class="box2">
+        <img src="images/01.jpg" alt="" id="img">
+    </div>
+</body>
+
+<script>
+    var img = document.getElementById('img');
+    var ip = document.getElementsByTagName('input');
+    for(var i = 0; i < ip.length; i++) {
+        ip[i].index = i;
+        ip[i].onclick = function(){
+            img.src = 'images/0'+(this.index+1)+'.jpg';
+        }
+    }
+</script>
+
+
+</html> -->
+
+<!-- 相册结束 -->
+
+
+
+<!-- 开关灯开始 -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="button" value="关灯" id="btn-close">
+    <input type="button" value="开灯" id="btn-open">
+
+    <input type="button" value="关灯" id="btn-close">
+    <input type="button" value="开灯" id="btn-open">
+</body>
+
+<script>
+    var btnClose = document.getElementById('btn-close');
+    var btnOpen = document.getElementById('btn-open');
+    btnClose.onclick = function(){
+        document.body.style.backgroundColor = '#000';
+    }
+    btnOpen.onclick = function(){
+        document.body.style.backgroundColor = '#fff';
+    }
+
+
+    var btnClose = document.getElementById('btn-close');
+    var btnOpen = document.getElementById('btn-open');
+    btnClose.onclick = function(){
+        document.body.style.backgroundColor = '#000';
+    }
+    btnOpen.onclick = function(){
+        document.body.style.backgroundColor = '#fff';
+    }
+</script>
+
+</html> -->
+<!-- 开关灯结束 -->
+
+
+<!-- 一个按钮开关灯开始 -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="关灯" id="btn">
+    <input type="button" value="关灯" id="btn">
+</body>
+<script>
+    var btn = document.getElementById('btn');
+    btn.onclick = function(){
+        if(btn.value === '关灯') {
+            document.body.style.backgroundColor = 'red';
+            btn.value = '开灯'
+        }
+        else{
+            document.body.style.backgroundColor = 'green';
+            btn.value = '关灯';
+        }
+    }
+
+    var btn = document.getElementById('btn');
+    btn.onclick = function(){
+        if(btn.value==='关灯') {
+            document.body.style.backgroundColor = 'yellow';
+            btn.value = '开灯';
+        }
+        else {
+            document.body.style.backgroundColor = 'blue';
+            btn.value = '关灯';
+        }
+    }
+            
+</script>
+
+</html> -->
+<!-- 一个按钮开关灯结束 -->
+
+
+
+<!-- 点击切换图片开始 -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="点击切换图片" id="btn">
+    <img src="./images/01.jpg" alt="" id="img">
+
+</body>
+
+
+<script>
+    var btn = document.getElementById('btn');
+    var img = document.getElementById('img');
+    btn.onclick = function(){
+        img.src = './images/02.jpg';
+    }
+</script>
+</html> -->
+<!-- 点击切换图片结束 -->
+
+
+
+<!-- 相册练习开始 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <div class="box">
+        <div class="box-input">
+            <input type="button" value="图片1" data-src="./images/01.jpg">
+            <input type="button" value="图片2" data-src="./images/02.jpg">
+            <input type="button" value="图片3" data-src="./images/03.jpg">
+            <input type="button" value="图片4" data-src="./images/04.jpg">
+            <input type="button" value="图片5" data-src="./images/05.jpg">
+        </div>
+        <div class="box-img">
+            <img src="./images/01.jpg" alt="">
+        </div>
+    </div> -->
+    <!-- <div class="box">
+        <div class="box-input">
+            <input type="button" value="图片1" data-btn="./images/01.jpg">
+            <input type="button" value="图片2" data-btn="./images/02.jpg">
+            <input type="button" value="图片3" data-btn="./images/03.jpg">
+            <input type="button" value="图片4" data-btn="./images/04.jpg">
+            <input type="button" value="图片5" data-btn="./images/05.jpg">
+        </div>
+        <div class="box-img">
+            <img src="./images/01.jpg" alt="">
+        </div>
+    </div> -->
+
+    <!-- <div class="box">
+        <div class="box-input">
+            <input type="button" value="图片1" data-btn='./images/01.jpg'>
+            <input type="button" value="图片2" data-btn='./images/02.jpg'>
+            <input type="button" value="图片3" data-btn='./images/03.jpg'>
+            <input type="button" value="图片4" data-btn='./images/04.jpg'>
+            <input type="button" value="图片5" data-btn='./images/05.jpg'>
+        </div>
+        <div class="box-img">
+            <img src="./images/01.jpg" alt="">
+        </div>
+    </div> -->
+    <!-- <div class="box">
+        <div class="box-input">
+            <input type="button" value="图片1" data-src="./images/01.jpg">
+            <input type="button" value="图片2" data-src="./images/02.jpg">
+            <input type="button" value="图片3" data-src="./images/03.jpg">
+            <input type="button" value="图片4" data-src="./images/04.jpg">
+            <input type="button" value="图片5" data-src="./images/05.jpg">
+        </div>
+        <div class="box-img">
+            <img src="./images/01.jpg" alt="">
+        </div>
+    </div> -->
+
+    <!-- <div class="box">
+        <div class="box-input">
+            <input type="button" value="图片1">
+            <input type="button" value="图片2">
+            <input type="button" value="图片3">
+            <input type="button" value="图片4">
+            <input type="button" value="图片5">
+        </div>
+        <div class="box-img">
+            <img src="./images/01.jpg" alt="" id='img'>
+        </div>
+    </div> -->
+
+
+    <!-- <input type="text" id="text"> -->
+</body>
+
+
+<script>
+    // var btns = document.getElementsByTagName('input');
+    // var img = document.getElementsByTagName('img');
+    // for(var i = 0; i < btns.length; i++) {
+    //     btns[i].onclick = function() {
+    //         var src = this.dataset.src;
+    //         img[0].src = src;
+    //     }
+    // }
+
+    // var btns = document.getElementsByTagName('input');
+    // var img = document.getElementsByTagName('img');
+    // for(var i = 0; i<btns.length; i++) {
+    //     btns[i].onclick = function(){
+    //         var btn = this.dataset.btn;
+    //         img[0].src = btn;
+    //     }
+    // }
+
+    // var btn = document.getElementsByTagName('input');
+    // var img = document.getElementsByTagName('img');
+    // for(var i = 0; i<btn.length;i++) {
+    //     btn[i].onclick = function(){
+    //         var btns = this.dataset.btn;
+    //         img[0].src = btns;
+    //     }
+    // }
+
+
+    // var btn = document.getElementsByTagName('input');
+    // var img = document.getElementsByTagName('img');
+    // for(var i=0;i<btn.length;i++){
+    //     btn[i].onclick=function(){
+    //         var btns = this.dataset.src;
+    //         img[0].src = btns; 
+    //     }
+    // }
+
+    // var btn = document.getElementsByTagName('input');
+    // var img = document.getElementsByTagName('img');
+    // for (var i = 0; i < btn.length; i++) {
+    //     btn[i].onclick = function () {
+    //         var btns = this.dataset.src;
+    //         img[0].src = btns;
+    //     }
+    // }
+
+    // var btn = document.getElementsByTagName('input');
+    // var img = document.getElementById('img');
+    // for(let i=0;i<btn.length;i++) {
+    //     btn[i].onclick = function() {
+    //         img.src = './images/0'+(i+1)+'.jpg'
+    //     }
+    // }
+
+
+    // var text = document.getElementById('text');
+    // text.onfocus = function(){
+    //     console.log('聚焦');
+    // }
+
+    // text.onblur = function(){
+    //     console.log('失去焦点')
+    // }
+</script>
+
+</html>
+<!-- 相册练习结束 -->

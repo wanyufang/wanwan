@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .b-box {
+            position: absolute;;
+            top: 100px;
+            left: 300px;
+        }
+        input {
+            box-sizing: border-box;
+            width: 300px;
+            height: 56px;
+            background-image: url('./images/search.png');
+            padding: 4px 6px;
+            border: none;
+            outline: none;
+            font-size: 24px;
+        }
+        .box {
+            border: 1px solid #ccc;
+            position: absolute;
+            top: 54px;;
+            left: 2px;
+            display: none;
+        }
+        .show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div class="b-box">
+        <input type="text" id="text">
+        <div class="box" id="box">
+            <img src="./images/mi.png" alt="">
+        </div>
+    </div> -->
+
+    <div class="b-box">
+        <input type="text" id="text">
+        <div class="box" id="box">
+            <img src="./images/mi.png" alt="">
+        </div>
+    </div>
+</body>
+
+<script>
+    // let text = document.getElementById('text');
+    // let box = document.getElementById('box');
+    // text.onfocus = function() {
+    //     box.className = 'box show';
+    // }
+    // text.onblur = function() {
+    //     box.className = 'box';
+    // }
+
+    let text = document.getElementById('text');
+    let box = document.getElementById('box');
+    text.onfocus = function() {
+        box.className = 'box show';
+    }
+    text.onblur = function() {
+        box.className = 'box'
+    }
+</script>
+</html>
