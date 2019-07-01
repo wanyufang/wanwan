@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="按钮" id="btn">
+    <ul>
+        <li>我是第1个li</li>
+        <li>我是第2个li</li>
+        <li>我是第3个li</li>
+    </ul>
+</body>
+<script>
+
+    // innerHTML - 元素对象的内部的html结构
+
+
+    var ul =  document.querySelector('ul');
+    console.log(ul.innerHTML);
+
+
+    // innerHTML可以创建元素
+    // let btn = document.querySelector('#bttn');
+    // ul.innerHTML = '<li>催化</li>'
+
+
+    let btn = document.querySelector('#btn');
+    let ul = document.querySelector('ul')
+    btn.onclick = function(){
+        let old = ul.innerHTML;
+        ul.innerHTML = old + '<li>催化</li>';
+    }
+</script>
+</html>
