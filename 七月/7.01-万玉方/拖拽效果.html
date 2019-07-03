@@ -5,28 +5,137 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        input {
+            border: none;
+            background: none;
+            outline: none;         
+        }
+        ul {
+            list-style: none;
+        }
+        .box-top {
+            text-align: center;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        .box-center {
+            width: 500px;
+            height: 240px;
+            border: 1px solid #ebebeb;
+            margin: 120px auto;
+            box-sizing: border-box;
+            padding: 20px;
+            /* position: relative; */
+            position: absolute;
+            top: 0px;
+            left: 465px;
+        }
+        .hidden {
+            display: none;
+        }
+        .box-center ul {
+            text-align: center;
+        }
+        .box-center ul li {
+            margin-bottom: 20px;    
+            font-size: 14px;
+        }
+        .box-center ul .center-a {
+            font-size: 20px;
+        }
+        .center-b input,
+        .center-c input {
+            border: 1px solid #ebebeb;
+            box-sizing: border-box;
+            padding: 10px 2px;
+            width: 300px;
+            font-size: 12px
+        }
+        .box-center ul .center-d {
+            border: 1px solid #ebebeb;
+            width: 235px;
+            margin: auto;
+            box-sizing: border-box;
+            padding: 8px 5px;
+        }
+        .box-close {
+            border: 1px solid #ebebeb;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            line-height: 45px;
+            text-align: center;
+            font-size: 14px;
+            position: absolute;
+            right: -23px;
+            top: -23px;
+            background-color: #fff;
+            cursor: pointer;
+
+        }
+        
+        
+    </style>
 </head>
 <body>
+    <div class="box-top">
+        点击,弹出登录框
+    </div>
+    <div class="box-center hidden">
+        <ul>
+            <li class="center-a">登录会员</li>
+            <li class="center-b">
+                用户名: &nbsp;&nbsp;&nbsp;&nbsp;<input type="text" placeholder="请输入用户名">
+            </li>
+            <li class="center-c">
+                登陆密码: <input type="text" placeholder="请输入登录密码">
+            </li>
+            <li class="center-d">
+                <div>登陆会员 </div>
+            </li>
+        </ul>
+        <div class="box-close">关闭</div>
+    </div>
     
 </body>
 
 <script>
-    // // 按下
-    // document.onmousedown = function() {
-    //     console.log(123)
-    // }
+    let top1 = document.querySelector('.box-top');
+    let center1 = document.querySelector('.box-center');
+    top1.onclick = function() {
+        center1.classList.remove('hidden');
+    }
+    let close1 = document.querySelector('.box-close');
+    close1.onclick = function(){
+        center1.classList.add('hidden');
+    }
 
-    // // 松开
-    // document.onmouseup = function() {
-    //     console.log(456)
-    // }
+    let title = document.querySelector('.center-a');
+    let isDrageble = false;
+    let tempX;
+    let tempY;
+    title.onmousedown = function(e) {
+        isDrageble = true;
+        tempX = e.pageX - center1.offsetLeft;
+        tempY = e.pageY - center1.offsetTop;
+    }
+    document.onmousemove = function(e) {
+        if(isDrageble == true) {
+            let x = e.pageX;
+            let y = e.pageY;
+            center1.style.left = x - tempX + 250 + 'px';
+            center1.style.top = y - tempY - 140 +'px'
+        }
+    }
 
-    // // 完整过程结束后
-    // document.onclick = function(){
-    //     console.log(789);
-    // }
-
-    
+    document.onmouseup = function() {
+        isDrageble = false;
+    }
 
 
 </script>

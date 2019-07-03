@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .weibo {
+            width: 600px;
+            border: 1px solid #ccc;
+
+            margin: 100px auto;
+            padding: 10px;
+
+        }
+
+        .weibo-text {
+            width: 590px;
+            height: 140px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            outline: none;
+            resize: none;
+        }
+
+        .weibo-text:focus {
+            border-color: #f60;
+        }
+
+        .weibo-btn {
+            width: 80px;
+            height: 30px;
+            background-color: #f90;
+            color: #fff;
+            border: 0 none;
+            margin-top: 5px;
+            border-radius: 3px;
+            cursor: pointer;
+            outline: 0 none;
+        }
+
+        .weibo-list {
+            padding-top: 10px;
+        }
+
+        .weibo-list li {
+            font-size: 14px;
+            line-height: 30px;
+            border-bottom: 1px dotted #ccc;
+            overflow: hidden;
+        }
+
+        .weibo-list li p {
+            float: left;
+        }
+
+        .weibo-list li span {
+            float: right;
+            cursor: pointer;
+        }
+
+        .weibo-list li input {
+            height: 24px;
+            line-height: 24px;
+            width: 300px;
+            font-size: 14px;
+            border: 0 none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="weibo">
+        <textarea class="weibo-text"></textarea>
+        <input class="weibo-btn" value="发布" type="button">
+        <ul class="weibo-list">
+            <li>
+                <p>快来收了这九款用上就停不下来的应用吧！！</p>
+                <span>删除</span>
+            </li>
+            <li>
+                <p>超级详细的云南大理自助游攻略</p>
+                <span>删除</span>
+            </li>
+            <li>
+                <p>外国最近很火的舞蹈，舒服简单自然，太棒了！</p>
+                <span>删除</span>
+            </li>
+        </ul>
+    </div>
+</body>
+
+<script>
+    // // 获取元素(按钮 文本域 ul)
+    // let btn = document.querySelector('.weibo-btn');
+    // let text = document.querySelector('.weibo-text');
+    // let list = document.querySelector('.weibo-list');
+    // // 给按钮注册点击事件
+    // btn.onclick = function () {
+    //     // 获取文本域内容
+    //     let content = text.value;
+    //     // // 创建一个新的li
+    //     // let li = document.createElement('li');
+    //     // // 给新的创建两个子元素
+    //     // li.innerHTML = '<p>' + content + '</p><span>删除</span>';
+    //     // // 将新的li放在最前面
+    //     // list.insertBefore(li, list.children[0]);
+    //     // // 用户提交后清空文本域
+    //     // text.value = '';
+    //     if (text.value === '') {
+    //         alert('请输入文本内容');
+    //     } else {
+    //         let li = document.createElement('li');
+    //         // 给新的创建两个子元素
+    //         li.innerHTML = '<p>' + content + '</p><span>删除</span>';
+    //         // 将新的li放在最前面
+    //         list.insertBefore(li, list.children[0]);
+    //         // 用户提交后清空文本域
+    //         text.value = '';
+    //     }
+    // }
+
+    // // 事件委托 1.先找一个已经在结构中的前代元素 list
+    // list.onclick = function (e) {
+    //     // 判断点击的是否是span
+    //     if (e.target.nodeName === 'SPAN') {
+    //         // 把对应的li移除
+    //         list.removeChild(e.target.parentNode);
+    //     }
+    // }
+    // 获取元素
+    // let btn = document.querySelector('.weibo-btn');
+    // let text = document.querySelector('.weibo-text');
+    // let list = document.querySelector('.weibo-list');
+    // // 给btn创建点击事件
+    // btn.onclick = function () {
+    //     // 拿到文本输入框内容
+    //     let content = text.value;
+    //     if (text.value === '') {
+    //         alert('请输入文本内容');
+    //     } else {
+    //         // 创建一个新的li
+    //         let li = document.createElement('li');
+    //         // 给新创建的li创建两个子元素p和span
+    //         li.innerHTML = '<p>' + content + '</p><span>删除</span>';
+    //         // 将新创建的li放在第一行显示
+    //         list.insertBefore(li, list.children[0]);
+
+    //         // 输入完成后清空输入框
+    //         text.value = '';
+    //     }
+
+    // }
+
+    // // 事件委托 先找一个已经在结构中的前代元素 list
+    // list.onclick = function (e) {
+    //     // 判断点击是否为span
+    //     if (e.target.nodeName === 'SPAN') {
+    //         // 如果是责删除整个li
+    //         list.removeChild(e.target.parentNode);
+    //     }
+    // }
+
+    // 获取元素
+    // let btn = document.querySelector('.weibo-btn');
+    // let text = document.querySelector('.weibo-text');
+    // let list = document.querySelector('.weibo-list');
+    // // 给btn创建事件
+    // btn.onclick = function(){
+    //     // 获取文本输入框内容
+    //     let content = text.value;
+    //     // 创建一个新的li
+    //     let li = document.createElement('li');
+    //     // 给创建的li加两个子元素
+    //     li.innerHTML = '<p>'+ content +'</p><span>删除</span>';
+    //     // 将创建的li放在第一行显示
+    //     list.insertBefore(li,list.children[0]);
+    //     // 点击发布后清空文本输入框
+    //     text.value = '';
+    // }
+    // // 事件委托
+    // // 先找一个已经在结构中的前代元素 list
+    // list.onclick = function(e) {
+    //     // 当鼠标点击span时执行下部操作
+    //     if(e.target.nodeName === 'SPAN') {
+    //         // 删除li
+    //         list.removeChild(e.target.parentNode)
+    //     }
+    // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // 获取元素
+    let btn = document.querySelector('.weibo-btn');
+    let text = document.querySelector('.weibo-text');
+    let list = document.querySelector('.weibo-list');
+    // 给按钮注册点击事件
+    btn.onclick = function () {
+        // 获取文本输入框内容
+        let content = text.value;
+        // 创建一个新的li
+        if (text.value === '') {
+            alert('请输入文本内容')
+        } else {
+            let li = document.createElement('li');
+            // 给新创建的li添加两个子元素            
+            li.innerHTML = '<p>' + content + '</p><span>删除</span>';
+            // 让新创建的li在第一行显示
+            list.insertBefore(li, list.children[0]);
+            // 点击后清空文本输入框
+            text.value = '';
+        }
+    }
+    // 事件委托
+    // 先找一个在结构中有的前代元素 list
+    list.onclick = function (e) {
+        // 当鼠标点击后判断是否为span
+        if (e.target.nodeName === 'SPAN') {
+            // 如果是span则删除span的父元素li
+            list.removeChild(e.target.parentNode);
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</html>
