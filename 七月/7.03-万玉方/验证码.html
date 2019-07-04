@@ -136,46 +136,60 @@
     //         }
     //     },1000)
     // }
-    // 获取按钮
-    let btn = document.querySelector('#getCode');
+    // // 获取按钮
+    // let btn = document.querySelector('#getCode');
+    // // 注册点击事件
+    // btn.onclick = function () {
+    //     // 设置时间
+    //     let count = 3;
+    //     // 设置按钮内容
+    //     btn.value = '获取验证码(' + count + ')';
+    //     // 把按钮禁用
+    //     btn.disabled = true;
+    //     // 开启定时器,进行倒计时
+    //     let timeId = setInterval(function () {
+    //         // 把定时器减少
+    //         count--;
+    //         // 把按钮的文字,实现倒计时的效果
+    //         btn.value = '获取验证码(' + count + ')';
+    //         if (count === 0) {
+    //             // 停止计时器
+    //             clearInterval(timeId);
+    //             // 把文字恢复原样
+    //             btn.value = '获取验证码';
+    //             // 把按钮重置
+    //             btn.disabled = false;
+    //         }
+    //     }, 1000)
+    // }
+
+
+   // 获取按钮
+   let btn = document.querySelector('#getCode');
     // 注册点击事件
-    btn.onclick = function () {
-        // 设置时间
+    btn.onclick = function(){
         let count = 3;
-        // 设置按钮内容
-        btn.value = '获取验证码(' + count + ')';
-        // 把按钮禁用
+        btn.value =  '获取验证码(' + count + ')';
         btn.disabled = true;
-        // 开启定时器,进行倒计时
-        let timeId = setInterval(function () {
-            // 把定时器减少
+        let timeId = setInterval(function(){
             count--;
-            // 把按钮的文字,实现倒计时的效果
             btn.value = '获取验证码(' + count + ')';
-            if (count === 0) {
-                // 停止计时器
-                clearInterval(timeId);
-                // 把文字恢复原样
-                btn.value = '获取验证码';
-                // 把按钮重置
-                btn.disabled = false;
-            }
-
-        }, 1000)
-
+       
+        if(count===0){
+            clearInterval(timeId);
+            btn.value = '获取验证码';
+            btn.disabled = false;
+        }
+    },1000)
     }
-
-
-
-
-
-
-
-
-
-
-
-
+        // 设置时间
+        // 设置按钮内容
+        // 把按钮禁用
+        // 开启定时器,进行倒计时
+            // 把按钮的文字,实现倒计时的效果
+                // 停止计时器
+                // 把文字恢复原样
+                // 把按钮重置
 
 
 
