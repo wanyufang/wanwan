@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .weibo {
+            width: 600px;
+            border: 1px solid #ccc;
+
+            margin: 100px auto;
+            padding: 10px;
+
+        }
+
+        .weibo-text {
+            width: 590px;
+            height: 140px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            outline: none;
+            resize: none;
+        }
+
+        .weibo-text:focus {
+            border-color: #f60;
+        }
+
+        .weibo-btn {
+            width: 80px;
+            height: 30px;
+            background-color: #f90;
+            color: #fff;
+            border: 0 none;
+            margin-top: 5px;
+            border-radius: 3px;
+            cursor: pointer;
+            outline: 0 none;
+        }
+
+        .weibo-list {
+            padding-top: 10px;
+        }
+
+        .weibo-list li {
+            font-size: 14px;
+            line-height: 30px;
+            border-bottom: 1px dotted #ccc;
+            overflow: hidden;
+        }
+
+        .weibo-list li p {
+            float: left;
+        }
+
+        .weibo-list li span {
+            float: right;
+            cursor: pointer;
+        }
+
+        .weibo-list li input {
+            height: 24px;
+            line-height: 24px;
+            width: 300px;
+            font-size: 14px;
+            border: 0 none;
+        }
+
+        .time {
+            margin-right: 10px;
+            font-style: normal;
+            float: right;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="weibo">
+        <textarea class="weibo-text"></textarea>
+        <input class="weibo-btn" value="发布" type="button">
+        <ul class="weibo-list">
+            <!-- <li>
+                <p class="content">快来收了这九款用上就停不下来的应用吧！！</p> 
+                <span class="del">删除</span>
+                <span class="time">2019</span>
+            </li> -->
+        </ul>
+    </div>
+</body>
+<script src="kits.js"></script>
+<script>
+    //   步骤：
+    // 1.获取按钮
+    let text = document.querySelector('.weibo-text');
+    let btn = document.querySelector('.weibo-btn');
+    let list = document.querySelector('.weibo-list');
+    // 2.给按钮注册点击事件
+    btn.onclick = function () {
+        // 获取文字
+        let content = text.value;
+        // 3.新建li
+        let li = document.createElement('li');
+        // 引入获取时间
+        let time = kits.date();
+        // 给li添加结构
+        li.innerHTML = '<p>' + content + '</p>' + '<span>删除</span>' + '<span>' + time + '</span>'
+        // 把li添加到ul里面
+        list.insertBefore(li, list.children[0]);
+        // 把文本域清空
+        text.value = '';
+        // 为了保证我们刷新之后，可以从localStorage里面读取出数据，动态生成li，需要把数据先存储到localStorage
+        // 以什么样的形式存 - 以对象的方式存储进去，需要存储的东西有： 内容+时间
+        // 我们需要把多条数据，以一个键的形式存储起来，就需要一个数组，先把所有的数据存储进去，然后把数组存储到localStorage里面
+        // 创建一个数组
+        let obj = {
+            id: kits.date(),
+            content: content,
+            time: time
+        }
+        // console.log(obj);
+        // 把构建好的微博数据数组对象添加到微博的数组里面
+        // 先创建一个空数组用于储存微博数据
+
+        wbArr.push(obj);
+        // console.log(wbArr);
+        // localStorage不能存储数组,先把数组转换为JSON格式的字符串
+        let jsonWb = JSON.stringify(wbArr);
+        // console.log(jsonWb);
+        // 把jsonWb存储到本地数据localStorage里面
+        // 4.把数据存储到本地存储里面
+        localStorage.setItem('wbContent', jsonWb);
+    }
+
+    // 读取本地数据
+    let jsonWb = localStorage.getItem('wbContent');
+    // console.log(jsonWb);
+    // 判断 如果之前有数据,就把之前的数据读取,如果没有,就给一个空数组
+    let wbArr;
+    if (jsonWb == null) {
+        wbArr = [];
+    } else {
+        // 如果有数据 就把数据转换为对象
+        wbArr = JSON.parse(jsonWb);
+    }
+    // 先设立html为空字符串
+    let html = '';
+    for (let i = wbArr.length - 1; i >= 0; i--) {
+        html = html + '<li>' + '<p class="content">' + wbArr[i].content + '</p>' + '<span class="del" data-id="'+wbArr[i].id+'">删除</span>' + '<span class="time">' + wbArr[i].time + '</span>' + '</li>'
+    }
+
+    // 把html字符串放进ul里面
+    list.innerHTML = html;
+
+/*
+  删除功能
+    1. 点击删除按钮 - 一定要使用委托的方式
+    2. 委托实现点击删除有反应
+    3. 要删除对应的li从结构中移除
+*/  
+    // 有可能会重复,所以用addEventListener注册
+    list.addEventListener('click',function(e){
+        // 判断点击是否是删除
+        if(e.target.className === 'del') {
+            // 如果是 就把li移除
+            list.removeChild(e.target.parentNode);
+            // 声明id
+            let id = e.target.dataset.id;
+            // console.log(id);
+            // 根据id把数据从本地数据中删除
+            // 首先从本地数据中把数据读取出来
+            let jsonWb = localStorage.getItem('wbContent');
+            // 转换为数组
+            let array = JSON.parse(jsonWb);
+            // console.log(array.length);
+            // 遍历数组,找出对应的一个数据,把该数据移除掉
+            array.forEach((e,i) => {
+                // 判断哪个元素的id和点击的时候获取的id一致
+                if(id == e.id){
+                    // arr.splice(从哪里开始,删除多少个)
+                    arr.splice(i,1)
+                }
+            });
+            jsonWb = JSON.stringify(array);
+            localStorage.setItem('wbContent',jsonWb);
+        }
+    })
+
+</script>
+
+</html>
