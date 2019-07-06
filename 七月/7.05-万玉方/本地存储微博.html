@@ -103,6 +103,8 @@
     let text = document.querySelector('.weibo-text');
     let btn = document.querySelector('.weibo-btn');
     let list = document.querySelector('.weibo-list');
+
+    let myId = kits.uniquenessId();
     // 2.给按钮注册点击事件
     btn.onclick = function () {
         // 获取文字
@@ -112,7 +114,7 @@
         // 引入获取时间
         let time = kits.date();
         // 给li添加结构
-        li.innerHTML = '<p>' + content + '</p>' + '<span>删除</span>' + '<span>' + time + '</span>'
+        li.innerHTML = '<p class="content">' + content + '</p>' + '<span class="del" data-id="'+ myId +'">删除</span>' + '<span class="time">' + time + '</span>'
         // 把li添加到ul里面
         list.insertBefore(li, list.children[0]);
         // 把文本域清空
@@ -122,7 +124,7 @@
         // 我们需要把多条数据，以一个键的形式存储起来，就需要一个数组，先把所有的数据存储进去，然后把数组存储到localStorage里面
         // 创建一个数组
         let obj = {
-            id: kits.date(),
+            id: myId,
             content: content,
             time: time
         }
@@ -186,7 +188,7 @@
                 // 判断哪个元素的id和点击的时候获取的id一致
                 if(id == e.id){
                     // arr.splice(从哪里开始,删除多少个)
-                    arr.splice(i,1)
+                    array.splice(i,1)
                 }
             });
             jsonWb = JSON.stringify(array);

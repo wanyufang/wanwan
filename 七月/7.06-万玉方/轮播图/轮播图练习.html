@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+          margin: 0;
+          padding: 0;
+        }
+    
+        ul {
+          list-style: none;
+        }
+    
+        .box {
+          width: 730px;
+          height: 454px;
+          padding: 8px;
+          border: 1px solid green;
+          margin: 100px auto;
+        }
+    
+        .inner {
+          position: relative;
+          overflow: hidden;
+          height: 454px;
+        }
+    
+        #imglist {
+          width: 700%;
+          position: absolute;
+          left: 0;
+          transition: left 300ms linear;
+        }
+    
+        li {
+          float: left;
+        }
+    
+        .list {
+          position: absolute;
+          bottom: 20px;
+          left: 50%;
+          margin-left: -85px;
+        }
+    
+        .list i {
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          background-color: #fff;
+          color: #333;
+          float: left;
+          font-style: normal;
+          line-height: 20px;
+          font-size: 14px;
+          text-align: center;
+          margin-right: 10px;
+          cursor: pointer;
+        }
+    
+        .list i:last-child {
+          margin-right: 0;
+        }
+    
+        .list i.current {
+          background-color: skyblue;
+          color: #fff;
+        }
+    
+        .arrow {
+          position: absolute;
+          width: 100%;
+          top: 50%;
+          margin-top: -30px;
+        }
+    
+        .arrow-left,
+        .arrow-right {
+          width: 30px;
+          height: 60px;
+          position: absolute;
+          font: 20px/60px "consolas";
+          color: #fff;
+          background-color: rgba(0, 0, 0, .3);
+          text-align: center;
+          cursor: pointer;
+        }
+    
+        .arrow-right {
+          right: 0;
+        }
+      </style>
+</head>
+<body>
+  <div class="box" id="box">
+    <div class="inner" id="inner">
+      <ul id="imglist">
+        <li><a href="#"><img src="images/1.jpg" alt=""></a></li>
+        <li><a href="#"><img src="images/2.jpg" alt=""></a></li>
+        <li><a href="#"><img src="images/3.jpg" alt=""></a></li>
+        <li><a href="#"><img src="images/4.jpg" alt=""></a></li>
+        <li><a href="#"><img src="images/5.jpg" alt=""></a></li>
+        <li><a href="#"><img src="images/6.jpg" alt=""></a></li>
+      </ul>
+      <div class="list">
+        <i class="current">1</i>
+        <i>2</i>
+        <i>3</i>
+        <i>4</i>
+        <i>5</i>
+        <i>6</i>
+      </div>
+      <div class="arrow">
+        <span class="arrow-left">&lt;</span>
+        <span class="arrow-right">&gt;</span>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+<script>
+  // 图片的宽度要在静态资源加载完毕之后获取
+  window.onload = function(){
+  // 获取元素
+  let dot = document.querySelectorAll('.list>i');
+  let ul = document.querySelector('#imglist');
+  let img = document.querySelector('#imglist img');
+  // 序号轮播
+  dot.forEach((e,i) => {
+    e.onmouseover = function() {
+      // 计算ul的位置 = 索引 * 图片宽度 * -1
+      let target = i * img.offsetWidth * -1;
+      // 将得到的值target设给ul
+      ul.style.left = target + 'px';
+      // 处理序号的样式 - 排他
+      dot.forEach(e => {
+        // 将所有样式删除
+        e.classList.remove('current');
+      });
+      // 给dot添加鼠标移入时候的样式
+      this.classList.add('current');
+      // 需要把点击和自动轮播的索引和当前一如的这个圆点同步
+      
+    }
+  })
+
+  // 左右按钮轮播
+  // 获取右边按钮
+  let btnR = document.querySelector('.arrow-right');
+  // 声明一个变量,表示当前的图片是第几章,一开始给的初始值是0,默认一开始就是第一张
+  let picture = 0;
+  // 给右边按钮注册点击事件
+  btnR.onclick = function() {
+    // 如果是最后一张 就直接切换到第0张
+    // 如果索引到达最后一张,最后一张的索引是ul的子元素的长度-1
+    if(picture === ul.children.length -1) {
+      picture = 0;
+    }else {
+      // 需要让索引++
+      picture++;
+    }
+    // 计算出ul改在的位置
+    let target = picture * img.offsetWidth * -1
+    // 将得到的值target设置给别
+    ul.style.left = target + 'px';
+    // 排他原理 设置圆点
+    dot.forEach(e => {
+      // 先清除圆点样式
+      e.classList.remove('current');
+    });
+    // 再重新设置圆点样式
+    circles[picture].classList.add('current');
+  }
+
+  // 左边按钮同理
+  let btnL = document.querySelector('.arrow-left');
+  btnL.onclick = function() {
+    // 如果是第一张,就点击左边,应该切换到最后一张
+    if(picture === 0) {
+      picture = ul.children.length -1;
+    }else {
+      // 让索引减少
+      picture--;
+    }
+
+    // 算出ul的位置设置给他
+    let target = picture *img.offsetWidth * -1;
+    ul.style.left = target + 'px';
+    // 处理圆点
+    dot.forEach(e => {
+      e.classList.remove('current');
+    });
+    dot[picture].classList.add('current');
+  }
+
+  // 自动轮播的实现 - 其实就是每过一段时间,就点击一次右边的按钮一次
+  // 每隔一段时间去做一件事情 - setInterval
+  let timeId = setInterval(() => {
+    btnR.onclick();
+  },2000)
+
+  // 实现鼠标移入移出,暂停和恢复自动轮播
+  // 鼠标移入把定时器清除(停止)
+  // 给box注册点击事件
+  let box = document.querySelector('#box');
+  box.onmouseover = () => {
+    clearInterval(timeId);
+  }
+  // 鼠标移出,继续开启定时器
+  box.onmouseout = () => {
+    timeId = setInterval(() => {
+      btnR.onclick()
+    },1500)
+  }
+}
+</script>
+</html>

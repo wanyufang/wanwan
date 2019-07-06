@@ -40,3 +40,14 @@ kits.number = function () {
     r = r * 10 + 1;
     r = Math.floor(r);
 }
+
+
+// 封装一个可以生成唯一id的方法
+kits.uniquenessId = function(){
+    // 获取当前时间
+    let now = Date.now();
+    // 生成范围内的随机整数
+    let r = kits.randomInt(100000,999999);
+    // 将时间与随机整数合并成字符串
+    return now + '' + r;
+}
