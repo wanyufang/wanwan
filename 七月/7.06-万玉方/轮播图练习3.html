@@ -125,18 +125,17 @@
 
 </body>
 
-
 <script>
     // 图片的宽度要在静态资源加载完毕之后获取
     window.onload = function () {
         // 获取元素
         let dot = document.querySelectorAll('.list>i');
         let ul = document.querySelector('#imglist');
-        let img = document.querySelector('#imglist img');
+        let img = document.querySelector('#imglist img')
         // 序号轮播
         dot.forEach((e, i) => {
-            e.onmouseover = function () {
-                // 计算ul的位置 = 索引 * 图片宽度 * -1;
+            e.onmousemove = function () {
+                // 计算ul的位置 = 索引 * 图片短裤 * -1;
                 let target = i * img.offsetWidth * -1;
                 // 设置给ul
                 ul.style.left = target + 'px';
@@ -148,78 +147,93 @@
                 // 重新添加样式
                 this.classList.add('current');
                 // 跟圆点同步
-                picture = i;
+                pic = i;
             }
-        })
+        });
+
+
+
+
+
+
 
         // 左右按钮轮播
+        let btnL = document.querySelector('.arrow-left')
         // 获取右边按钮
-        let btnR = document.querySelector('.arrow-right');
+        let btnR = document.querySelector('.arrow-right')
         // 声明一个变量,表示当前的图片是第几张,一开始给的初始值是0,默认一开始就是第一张
-        let picture = 0;
+        let pic = 0;
         // 注册点击事件
         btnR.onclick = function () {
             // 如果是最后一张 就直接切换到第0张;
             // 如果索引到达最后一张,最后一张的索引是ul的子元素的长度 -1
-            if (picture === ul.children.length - 1) {
-                picture = 0;
+            if (pic === ul.children.length - 1) {
+                pic = 0;
             } else {
                 // 需要让索引++
-                picture++;
+                pic++;
             }
             // 计算出ul该在的位置
-            let target = picture * img.offsetWidth * -1;
+            let target = pic * img.offsetWidth * -1;
             // 设置给ul
             ul.style.left = target + 'px';
-            // 处理圆点
+            // 处理圆点 排他
             dot.forEach(e => {
                 e.classList.remove('current');
             });
-            dot[picture].classList.add('current');
+            dot[pic].classList.add('current');
         }
-
-
-
         // 左边按钮同理
-        let btnL = document.querySelector('.arrow-left');
         btnL.onclick = function () {
             // 如果是第一张,点击左边的时候应该切换到最后一张
-            if (picture === 0) {
-                picture = ul.children.length - 1;
+            if (pic === 0) {
+                pic = ul.children.length - 1;
             } else {
                 // 让索引减少
-                picture--;
+                pic--;
             }
-
-            // 算出ul的位置设置给他
-            let target = picture * img.offsetWidth * -1;
+            // 算出lu的位置设置给他
+            let target = pic * img.offsetWidth * -1;
             ul.style.left = target + 'px';
             // 处理圆点
             dot.forEach(e => {
                 e.classList.remove('current');
-            });
-            dot[picture].classList.add('current');
+            })
+            dot[pic].classList.add('current');
         }
+
+
+
+
+
+
+
+
+
+
+
+
 
         // 自动轮播
         let timeId = setInterval(() => {
-            btnR.onclick()
-        }, 2000);
+            btnR.onclick();
+        }, 1000)
 
-        // 实现鼠标移入移出,暂停和回复自动轮播
+        // 实现鼠标移入移出,暂停和恢复自动轮播
         // 鼠标移入把定时器清除(停止)
         // 给box注册
-        let box = document.querySelector('#box');
+        let box = document.querySelector('#box')
         box.onmouseover = () => {
             clearInterval(timeId);
         }
-        // 鼠标移除,继续开启定时器
+        // 鼠标移出,继续开启定时器
         box.onmouseout = () => {
             timeId = setInterval(() => {
                 btnR.onclick();
-            }, 2000);
+            }, 1000);
         }
     }
+
 </script>
 
 </html>
