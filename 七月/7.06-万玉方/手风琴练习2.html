@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        ul {
+            list-style: none;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+
+        div {
+            width: 1150px;
+            height: 400px;
+            margin: 50px auto;
+            border: 1px solid red;
+            overflow: hidden;
+        }
+
+        div li {
+            width: 240px;
+            height: 400px;
+            float: left;
+            transition: width 300ms;
+        }
+
+        div ul {
+            width: 1300px;
+        }
+
+        /* div {
+              background-image: url('');
+            } */
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+</body>
+
+<script>
+    /*
+        1.动态的给所有的li添加背景图片
+        2.鼠标移入,让当前变宽,让其他变窄
+        3.鼠标移入,恢复原状
+    */
+    // 动态的添加背景图片
+    var lis = document.querySelectorAll('#box li');
+    //  使用forEach遍历与绵元素的伪数组
+    lis.forEach(function (item, index) {
+        // item就是为数组里面的每个元素,index就是每个元素对应的索引
+        // 动态给每个li添加背景图片
+        item.style.backgroundImage = 'url(./images/' + (index + 1) + '.jpg)';
+        // 注册鼠标移入
+        item.onmouseover = function () {
+            // 排他
+            lis.forEach(function (item) {
+                item.style.width = 100 + 'px';
+            })
+            this.style.width = 800 + 'px';
+        }
+        // 注册移出事件
+        item.onmouseout = function () {
+            // 把所有的都恢复原状
+            lis.forEach(function (item) {
+                item.style.width = 240 + 'px';
+            })
+        }
+    });
+</script>
+
+</html>
