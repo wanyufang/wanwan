@@ -78,7 +78,7 @@
             <li><a href="#">牛仔裤</a></li>
         </ul>
         <ul id="center">
-            <li><a href="#"><img src="images/女靴.jpg" width="200" height="250" /></a></li>
+            <li><a href="#"><img src="./images/女靴.jpg" width="200" height="250" /></a></li>
             <li><a href="#"><img src="images/雪地靴.jpg" width="200" height="250" /></a></li>
             <li><a href="#"><img src="images/冬裙.jpg" width="200" height="250" /></a></li>
             <li><a href="#"><img src="images/呢大衣.jpg" width="200" height="250" /></a></li>
@@ -117,7 +117,12 @@
       效果：
         鼠标移入分类，找到对应的图片，显示
     */
-// 获取分类，注册鼠标的移入事件
+    // 获取分类，注册鼠标的移入事件
+    $(function () {
+        $('#left>li,#right>li').on('mouseover', function () { 
+            $('#center>li').eq($('#left>li,#right>li').index(this)).show().siblings().hide();
+        });
+    })
     // 得到索引，根据索引获取对应的图片，显示，把其他图片隐藏
     // console.log($(this).index());
     // 获取索引还有另一个用法
