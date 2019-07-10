@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        body {
+            background: #000;
+        }
+
+        .wrap {
+            margin: 100px auto 0;
+            width: 630px;
+            height: 394px;
+            padding: 10px 0 0 10px;
+            background: #000;
+            overflow: hidden;
+            border: 1px solid #fff;
+        }
+
+        .wrap li {
+            float: left;
+            margin: 0 10px 10px 0;
+        }
+
+        .wrap img {
+            display: block;
+            border: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <ul>
+            <li><a href="#"><img src="images/01.jpg" alt="" /></a></li>
+            <li><a href="#"><img src="images/02.jpg" alt="" /></a></li>
+            <li><a href="#"><img src="images/03.jpg" alt="" /></a></li>
+            <li><a href="#"><img src="images/04.jpg" alt="" /></a></li>
+            <li><a href="#"><img src="images/05.jpg" alt="" /></a></li>
+            <li><a href="#"><img src="images/06.jpg" alt="" /></a></li>
+        </ul>
+    </div>
+</body>
+
+<script src="./jquery.js"></script>
+<script>
+    /*效果：
+鼠标移入某个图片，当前图片变亮，其他变暗 - 想让其他变暗，把其他的透明度变小
+鼠标移出，所有的图片恢复不透明*/
+    // 获取元素，注册鼠标的移入事件
+    // $(function () {
+    //     let imgs = $(".wrap li");
+    //     // console.log(imgs);
+    //     $(imgs).on('mouseenter', function () {
+    //         $(this).css('opacity', 1).siblings().css('opacity', 0.3);
+    //     })
+
+    //     // 鼠标移出
+    //     $('.wrap').on('mouseleave', function () {
+    //         $('.wrap ul').children().css('opacity', 1);
+    //     })
+    // })
+    $(function(){
+        $('.wrap li').on('mouseenter', function(){
+            $(this).css('opacity', 1).siblings().css('opacity', 0.3);
+        });
+        $('.wrap').on('mouseleave', function(){
+            $('.wrap li').css('opacity', 1);
+        })
+    })
+</script>
+
+</html>

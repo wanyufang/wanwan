@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>学习js时的问题</title>
+  <style>
+    div {
+      width: 800px;
+      height: 200px;
+      background-color: pink;
+      margin-bottom: 10px;
+      display: none;
+    }
+  </style>
+  <script>
+    window.onload = function (){
+      // 1.获得要操作的对象
+      var btnShow = document.getElementById("btnShow");
+      var btnSet = document.getElementById("btnSet");
+      var boxs = document.getElementsByTagName("div");
+
+      // 2.给事件源注册事件
+      btnShow.onclick = function (){
+        for(var i=0;i<boxs.length;i++){
+          boxs[i].style.display = 'block'
+        }
+      }
+
+      // 3.单击按钮给三个盒子设置内容
+      btnSet.onclick = function (){
+        for(var i=0;i<boxs.length;i++){
+          boxs[i].innerText = '使用原生js的方式来设置内容'
+        }
+      }
+    }
+
+
+//    window.onload = function (){
+//      alert(123)
+//    }
+    /**
+     * 1. js中的入口函数只能有一个
+     * 2. 原生的js有很多的兼容性问题
+     * 3. 原生的API比较繁琐
+     * 4. 原生js的容错性非常差
+     *
+     *
+     */
+  </script>
+</head>
+<body>
+<input type="button" value="显示" id="btnShow"/>
+<input type="button" value="设置" id="btnSet"/>
+<div></div>
+<div></div>
+<div></div>
+</body>
+</html>
