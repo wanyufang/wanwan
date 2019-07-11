@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .comment {
+            font-size: 40px;
+            color: red;
+        }
+
+        .comment li {
+            float: left;
+            cursor: pointer;
+        }
+
+        ul {
+            list-style: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <ul class="comment">
+        <li>☆</li>
+        <li>☆</li>
+        <li>☆</li>
+        <li>☆</li>
+        <li>☆</li>
+    </ul>
+
+</body>
+<script src="./jquery-2.2.2.js"></script>
+<script>
+    /*
+      效果1的思路：
+        1. 获取元素
+        2. 注册鼠标移入事件
+        3. 遍历从第一个开始，到当前结束，都变成实心的，把当前之后的变成空心的
+    */
+    $(() => {
+        let lis = $('.comment>li');
+        lis.on('mouseover', function () {
+            let index = $(this).index();
+            console.log(index);
+            //     for (let i = 0; i < lis.length; i++) {
+            //         if (i <= index) {
+            //             lis.eq(i).text('★')
+            //         } else {
+            //             lis.eq(i).text('☆')
+            //         }
+            //     }
+            // })
+
+            lis.each((i, e) => {
+                if (i <= index) {
+                    $(e).text('★');
+                }
+                else {
+                    $(e).text('☆')
+                }
+            })
+        })
+        let score = 0;
+        lis.on('mouseout', function () {
+            lis.each((i, e) => {
+                if (i < score) {
+                    $(e).text('★');
+                }
+                else {
+                    $(e).text('☆')
+                }
+            })
+        })
+
+
+
+        lis.on('click',function(){
+            score = $(this).index()+1;           
+        })
+    })
+</script>
+
+</html>
