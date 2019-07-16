@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box">111</div>
+</body>
+<script>
+    ; (function () {
+        function Init(selector) {
+            // 构建一个伪数组
+            let wyf = document.querySelectorAll(selector);
+            for (let i = 0; i < wyf.length; i++) {
+                this[i] = wyf[i]
+            }
+            this.length = wyf.length
+        }
+
+        Init.prototype.each = function (callback) {
+            for (let i = 0; i < this.length; i++) {
+                callback(i, this[i]);
+                // 解决对调函数里面的this,可以使用call来修改this指向
+                callback.call(this, i, this[i]);
+            }
+        }
+
+        Init.prototype.css = function (property, value) {
+            if (value !== undefined) {
+                this.each(function (i, e) {
+                    e.style[property] = value
+                })
+            }
+
+        }
+        function jQuery(selector) {
+            return new Init(selector);
+        }
+
+        window.$=jQuery
+    })();
+
+    let box = $('.box');
+    box.css('backgroundColor', 'blue');
+    box.css('width','200px');
+    box.css('height','200px');
+    
+</script>
+
+</html>

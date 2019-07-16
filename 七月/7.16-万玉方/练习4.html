@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<div class="box"></div>
+<body>
+
+</body>
+<script>
+    ; (function () {
+        function Init(selector) {
+            let dom = document.querySelectorAll(selector);
+            for (let i = 0; i < dom.length; i++) {
+                this[i] = dom[i]
+            }
+            this.length = dom.length
+        }
+
+        Init.prototype.each = function (callback) {
+            for (let i = 0; i < this.length; i++) {
+                callback(i, this[i]);
+            }
+        }
+
+        Init.prototype.css = function (property, value) {
+            if (value !== undefined) {
+                this.each(
+                    (function (i,e) {
+                        this[i].style[property] = value;
+                    }).bind(this)
+                )
+            }
+        }
+
+        function wan(selector) {
+            return new Init(selector);
+        }
+
+        window.$ = wan;
+    })();
+
+    let box = $('.box');
+    box.css('width','200px');
+    box.css('height','200px');
+    box.css('backgroundColor','red');
+</script>
+
+</html>

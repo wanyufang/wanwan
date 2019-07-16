@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .img div {
+            margin-left: 20px;
+            width: 200px;
+            height: 400px;
+            float: left;
+        }
+
+        .img div img {
+            width: 100%;
+
+        }
+
+        .clearfix::after {
+            content: ".";
+            clear: both;
+            display: block;
+            visibility: hidden;
+            height: 0;
+            line-height: 0;
+        }
+
+        .btn input {
+            margin-left: 111px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="img clearfix">
+        <div><img src="./images/IMG_3259.JPG" alt="" class="img-a"></div>
+        <div><img src="./images/IMG_3259.JPG" alt="" class="img-b"></div>
+        <div><img src="./images/IMG_3259.JPG" alt="" class="img-c"></div>
+    </div>
+    <div class="btn">
+        <input type="button" value="请投票(0)">
+        <input type="button" value="请投票(0)">
+        <input type="button" value="请投票(0)">
+    </div>
+</body>
+
+<script>
+    // 先声明一个都为0的数组
+    // let wan = [0, 0, 0];
+    // // 获取按钮
+    // let btns = document.querySelectorAll('input');
+    // // console.log(btns)
+    // // 注册点击事件
+    // btns.forEach(function (e, i) {
+    //     e.onclick = function () {
+    //         wan[i]++;
+    //         this.value = '请投票(' + wan[i] + ')'
+    //     }
+    //     console.log(this)
+    // })
+
+    let wan = [0,0,0];
+    let btns = document.querySelectorAll('input');
+    btns.forEach(function(e,i){
+        e.onclick = function(){
+            wan[i]++;
+            this.value = ('请投票('+ wan[i] +')')
+        }
+    })
+    
+
+
+
+</script>
+
+</html>

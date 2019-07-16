@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box">1</div>
+</body>
+<script>
+    // // 保护数据的
+    // // 1 先写一个外层的函数
+    // function fn1(){
+    //   // 2 在外层函数里面写一个要保护的数据的局部变量
+    //   let tickes = 0;
+    //   // 3 写一个内层的函数
+    //   function fn2(){
+    //     // 4 在内层函数里面，约定好，操作外层局部变量的规则
+    //     tickes++;
+    //     console.log(tickes);
+    //   }
+    //   // 把内层函数作为外层函数的返回值
+    //   return fn2;
+    // }
+    // // 6 调用外层函数，得到内层函数
+    // let res = fn1();
+    // // 7 调用 返回值  操作 外层函数的局部变量
+    // res();
+
+    ; (function () {
+        function Init(selector) {
+            // 构建一个伪数组
+            let wan = document.querySelectorAll(selector);
+            for (let i = 0; i < wan.length; i++) {
+                this[i] = wan[i];
+            }
+            // console.log(this)
+            // console.log(wan)
+            this.length = wan.length;
+        }
+
+        Init.prototype.each = function (callback) {
+            for (let i = 0; i < this.length; i++) {
+                callback(i, this[i]);
+            }
+        }
+
+        Init.prototype.css = function (property, value) {
+            if (value !== undefined) {
+                // let wyf = this;
+                this.each(function (i, e) {
+                    console.log(e)
+                    e.style[property] = value;
+                })
+            }
+        }
+        function wanWan(selector) {
+            return new Init(selector);
+        }
+        window.$ = wanWan;
+    })();
+
+    let box = $('.box');
+    // console.log(box)
+    box.css('width', '200px');
+    box.css('height', '200px');
+    box.css('backgroundColor', 'red');
+</script>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // function fn(a,b,c) {
+    //     console.log(this);
+    //     console.log(a,b,c);
+    //     return a+b+c;
+    // };
+    // fn();
+    // let obj = {
+    //     name : 'gou'
+    // };
+    // let wyf = fn.apply(obj,[1,2,3]);
+    // console.log(wyf)
+
+    // apply的使用场景
+    // 1.可以用于借用构造函数实现继承
+    function Person(name,age,gender){
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
+    }
+    function Student(name,age,gender){
+        Person.apply(this,[name,age,gender]);     
+    }
+    let ww = new Student('ww',12,'nan');
+    console.log(ww)
+
+
+    // 2.快速的获取数组中的最大值
+    let arr = [1,2,3,4,5,6,7];
+    let max = Math.max.apply(null,arr);
+    console.log(max)
+</script>
+</html>
