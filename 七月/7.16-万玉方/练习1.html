@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</body>
+<script>
+    // call的使用场景
+    // 1. 借用构造函数继承
+    // function Person(name,age,gender) {
+    //     this.name = name;
+    //     this.age = age;
+    //     this.gender = gender;
+    // };
+    // function Student(name,age,gender) {
+    //     Person.call(this,name,age,gender);
+    // };
+    // let s1 = new Student('小明','12','男');
+    // console.log(s1)
+
+    // 2. 使用数组的方法遍历伪数组
+    // let lis = document.querySelectorAll('li');
+    // lis.forEach(function(e,i){
+    //     // console.log(i)
+    //     e.innerText = i;
+    // });
+
+    // 2. 使用数组的方法遍历伪数组
+    // let lis = document.getElementsByTagName('li');
+    // console.log(lis);
+    // lis.forEach(function(e,i) {
+    //     e.innerText = i;
+    // });
+
+    // // 借用数组的forEach方法遍历伪数组
+    // Array.prototype.forEach.call(lis,function(e,i){
+    //     console.log(i);
+    //     console.log(e);
+    //     e.innerText = i;
+    // })
+
+    // 3.把伪数组转换为数组
+    // let obj = {
+    //     0 : 'a',
+    //     1 : 'b',
+    //     2 : 'c',
+    //     3 : 'd',
+    //     length: 4
+    // }
+    // let arr = Array.prototype.slice.call(obj,0);
+    // console.log(arr);
+    // let lis = document.getElementsByTagName('li');
+    // let arr = Array.prototype.slice.call(lis,0);
+    // console.log(arr);
+    // 当lis转换为数组之后,就可以使用forEach遍历了
+
+    // 数组的slice方法 功能 : 截取数组
+    // let arr = ['a','b','c','d','e']
+    // let newArr = arr.slice(2,4);
+    // console.log(newArr);
+    // console.log(arr);
+    // let newArr2 = arr.splice(2,3);
+    // console.log(newArr2)
+    // console.log(arr)
+    // let newArr3 = arr.slice(0);
+    // console.log(arr);
+    // let newArr4 = arr.splice(0);
+    // console.log(arr)
+
+    // let lis = document.querySelectorAll('li');
+    // console.log(lis)
+    // Array.prototype.push.call(lis,0,1);
+    // let lisArr = Array.prototype.slice.call(lis)
+    // let arrLis = Array.prototype.push.call(lisArr,2,2,1,1,1,1)
+    // console.log(lisArr);
+    // let arrLis1 = arrLis.push(1,2,3)
+    // console.log(lis)
+
+
+
+</script>
+
+</html>
