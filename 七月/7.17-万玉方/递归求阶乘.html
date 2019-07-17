@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    // 使用递归求阶乘
+    // n的阶乘 n! = n * (n-1) * (n-2) * ... * 3 * 2 * 1;
+    /*
+        找规律
+        找 n 和 n-1 的规律
+        n! = n * (n-1) * (n-2) * ... * 3 * 2 * 1;
+        (n-1)! = (n-1) * (n-2) * ... * 3 * 2 * 1;
+        (n-2)! = (n-2) * ... * 3 * 2 * 1;
+        n! = n * (n-1)!;
+        1 如果是1,就是自己本身
+        2 假设函数可以实现n的阶乘
+    */
+    // function fn(n) {
+    //     if (n === 1) {
+    //         return 1;
+    //     }
+    //     return n * fn(n - 1)
+    // }
+
+    // // console.log(fn(1));
+    // // console.log(fn(2));
+    // // console.log(fn(3));
+    // console.log(fn(4));
+
+    // 求斐波那契数列的递归
+    // 规律 :
+    // 第n个数字 = (n-1)+(n-2)
+    // 假设已经有一个函数可以求n的情况
+
+    function fn(n) {
+        if (n === 1 || n === 2) {
+            return 1;
+        }
+        return fn(n - 1) + fn(n - 2)
+    };
+    console.log(fn(1));
+    console.log(fn(2));
+    console.log(fn(3));
+    console.log(fn(4));
+</script>
+
+</html>
