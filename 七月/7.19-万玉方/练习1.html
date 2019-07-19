@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .main {
+            width: 1200px;
+            margin: 0 auto;
+        }
+
+        ul {
+            list-style: none;
+            max-width: 300px;
+            background-color: #000;
+            padding: 4px;
+        }
+
+        li {
+            margin-top: 4px;
+            padding-left: 10px;
+        }
+
+        a {
+            color: #fff;
+            text-decoration: none;
+            border-bottom: 1px dashed #fff;
+            font-size: 24px;
+        }
+
+        a::before {
+            content: "☆"
+        }
+
+        .hide {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="nav"></div>
+    </div>
+</body>
+<script>
+    // function wan(n) {
+    //     if (n === 1) {
+    //         return 1;
+    //     }
+    //     return n + wan(n - 1)
+    // }
+
+
+    // console.log(wan(10));
+
+    // function wan(n) {
+    //     if (n === 1) {
+    //         return 1;
+    //     }
+    //     return n * wan(n - 1)
+    // }
+
+    // console.log(wan(9))
+
+    // 斐波那契数列 : fn(n) = fn(n-1) + fn(n-2)
+    // function wan(n) {
+    //     if(n===1 || n===2) {
+    //         return 1;
+    //     }
+    //     return wan(n-1) + wan(n-2)
+    // }
+
+    // console.log(wan(1));
+    // console.log(wan(2));
+    // console.log(wan(3));
+    // console.log(wan(4));
+    // console.log(wan(5));
+
+    let wan = [
+        { id: 1, text: '一级菜单A',parentId: null},
+        { id: 2, text: '一级菜单B',parentId: null},
+        { id: 3, text: '一级菜单C',parentId: null},
+        { id: 4, text: '二级菜单AA',parentId: 1},
+        { id: 5, text: '二级菜单AB',parentId: 1},
+        { id: 6, text: '二级菜单AC',parentId: 1},
+        { id: 7, text: '二级菜单BA',parentId: 2},
+        { id: 8, text: '二级菜单BB',parentId: 2},
+        { id: 9, text: '二级菜单BC',parentId: 2},
+        { id: 10, text: '二级菜单CA',parentId: 3},
+        { id: 11, text: '二级菜单CB',parentId: 3},
+        { id: 12, text: '二级菜单CC',parentId: 3},
+        { id: 13, text: '三级菜单AAA',parentId: 4},
+        { id: 14, text: '三级菜单BAA',parentId: 7},
+        { id: 15, text: '三级菜单CAA',parentId: 10}
+    ]
+
+    function fn(arr,id) {
+        let temp = [];
+        arr.forEach(e => {
+            if(e.parentId === id){
+                temp.push(e);
+                e.child = fn (arr,e.id);
+            }
+        });
+        return temp;
+    }
+
+    let menu = fn(wan,null);
+    console.log(menu);
+</script>
+
+</html>
