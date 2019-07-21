@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        @keyframes linear {
+            50% {
+                background-color: #ff00ff;
+            }
+
+            100% {
+                background-color: #00cfff;
+            }
+        }
+
+        body {
+            padding: 0;
+            margin: 0;
+            background-color: #e7e7e7;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        #app {
+            width: 375px;
+            margin: auto;
+            height: 100vh;
+            background-color: #fff;
+        }
+
+        header {
+            /* height: 36px; */
+            padding: 6px 10px;
+            background-color: #fa0000;
+            animation: linear 10s linear 0s infinite alternate forwards;
+        }
+
+        input {
+            border: 0;
+            width: 100%;
+            outline: none;
+            border-radius: 20px;
+            height: 30px;
+            text-indent: 16px;
+        }
+
+        li {
+            list-style: none;
+            line-height: 30px;
+            border-bottom: 1px solid #c7c7c7;
+            padding-left: 10px;
+        }
+
+        footer {}
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <header>
+            <input id="filter" type="text" placeholder="请输入搜索内容">
+        </header>
+        <div class="content">
+            <li></li>
+            <li></li>
+        </div>
+    </div>
+</body>
+<script src="./jquery.js"></script>
+<script>
+    //  需求： 获取并展示文章内容
+    // 1.创建xmlhttprequest实例 
+    var wan = new XMLHttpRequest();
+    // 2.准备打开一个请求地址
+    wan.open('get', 'http://127.0.0.1:8080/getArticle');
+    // 3.send发送请求
+    wan.send();
+    // 4.监听通信状态
+    wan.onreadystatechange = function () {
+        // 5.判断请求的状态，响应状态
+        if (wan.readyState === 4 && wan.status === 200) {
+            // 转换json字符串
+            let wanwan = JSON.parse(wan.responseText);
+            // 获取data数组的每一项的content属性
+            wanwan.data.forEach(e => {
+                $('<li>').html(e.content).appendTo($('.content'));
+            });
+        }
+    }
+
+
+
+    // 1.监听输入框的输入事件 input
+    $('#filter').on('input', function () {
+        // 2.获取输入的内容
+        let val = $(this).val()
+        // 3.创建ajax
+        let wan = new XMLHttpRequest();
+        // 根据输入内容拿， 这时候要在请求地址的后面在url参数
+        wan.open('get', "http://127.0.0.1:8080/getSearchArticle?search=" + val);
+        wan.send();
+        wan.onreadystatechange = function () {
+            if (wan.readyState === 4 && wan.status === 200) {
+                // 把json字符串转换成对象
+                let wanwan = JSON.parse(wan.responseText);
+                $('.content').html('');
+                wanwan.data.forEach(e => {
+                    $('<li>').html(e.content).appendTo($('.content'))
+                })
+            }
+
+        }
+
+    })
+</script>
+
+</html>
