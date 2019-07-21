@@ -80,20 +80,69 @@
 <script src="../static/js/jquery.js"></script>
 <script src="../static/js/ajax.js"></script>
 <script>
-/*
-  并不是谁都能看英雄数据的，必须先登录之后，但是登录是在登录页面实现的，现在已经到了主页了，主页并不知道层级是否登录过，需要再次去服务器进行验证
-  还是需要使用ajax进行登录的校验
-    登录的校验需要一个用户的id，我们之前存储到了本地存储了，只需要读取出来，然后，发送ajax请求即可
-*/
-// 获取存储在本地数据里面的id
-  // 把这个地方做一个提示：如果没有登录过，希望用户去登录
-  // 去验证是否登录过
-      // console.log(res);
-        // 把登录按钮隐藏
-        // 把一些该显示的显示
-        // $('.page-header a:nth-child(2),.hero-list a:first-child,table').attr('hidden',false);
-        // 如果近期没有登录过
-        // 跳转到登录页
-        // 订阅-发布模式
+  /*
+    并不是谁都能看英雄数据的，必须先登录之后，但是登录是在登录页面实现的，现在已经到了主页了，主页并不知道层级是否登录过，需要再次去服务器进行验证
+    还是需要使用ajax进行登录的校验
+      登录的校验需要一个用户的id，我们之前存储到了本地存储了，只需要读取出来，然后，发送ajax请求即可
+  */
+  // 获取存储在本地数据里面的id
+  let userId = localStorage.getItem('userId');
+  if (userId === false) {
+    // 把这个地方做一个提示：如果没有登录过，希望用户去登录
+    alert('返回登陆');
+    location.href = './login.html'
+  } else {
+    // 去验证是否登录过
+    ajax({
+      url: 'http://127.0.0.1:8080/isLogin',
+      data: 'id=' + userId,
+      callback: function (res) {
+        res = JSON.parse(res);
+        // console.log(res);
+        // if(res)
+        if (res.code === 200) {
+          // console.log(res);
+          // 把登录按钮隐藏
+          $('.page-header a:last-child').attr('hidden', true);
+          // 把一些该显示的显示
+          $('.page-header a:nth-child(2),.hero-list a:first-child,table').removeAttr('hidden');
+          ajax({
+            type: 'post',
+            url: 'http://127.0.0.1:8080/getAllHero',
+            callback: function (res) {
+              // console.log(res);
+              // 转换
+              res = JSON.parse(res);
+              if (res.code === 200) {
+                let html = '';
+                // 遍历数组      
+                res.data.forEach(e => {
+                  html += `<tr>
+            <td>${e.id}</td>
+            <td>${e.name}</td>
+            <td>${e.gender}</td>
+            <td><img src="../static/images/${e.img}"></td>
+            <td><a href="./edit.html?id=1">修改</a> 
+            <a data-id="1" href="javscript:void(0);">删除</a>
+            </td>
+          </tr>`;
+                });
+                // 在遍历的函数里面生成结构
+                $('#tbody').html(html);
+              }
+            }
+          })
+        } else {
+          // 如果近期没有登录过
+          // 跳转到登录页
+          // 订阅-发布模式
+          alert('请先登录');
+          location.href = './login.html'
+        }
+      }
+    });
+
+  }
 </script>
+
 </html>
