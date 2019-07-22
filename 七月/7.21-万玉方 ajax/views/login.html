@@ -76,55 +76,127 @@
 <script src="../static/js/jquery.js"></script>
 <script src="../static/js/ajax.js"></script>
 <script>
-/*
-    实现登录：
-        使用ajax请求，请求登录的接口，看返回的结果是什么
-        如果登录成功，就跳转到主页
-*/
+    // /*
+    //     实现登录：
+    //         使用ajax请求，请求登录的接口，看返回的结果是什么
+    //         如果登录成功，就跳转到主页
+    // */
 
-// 获取元素// 注册点击事件
-$('#login-btn').on('click',function(){
-    // 交互常识 如果一些必须填写的表单元素，在提交之前，要判断是否为空
-    let userName = $('#userName').val();
-    // 通常会在判断非空之前，先把空格去掉 - js里面的字符串对象提供了一个方法可以去除前后空格
-    if(userName.trim().length === 0){
-        // 提示用户
-        alert('用户名不能为空')
-        return;
-    }
-    let password = $('#password').val();
-    if(password.trim().length === 0){
-        alert('密码不能为空')
-        return;
-    }
-    // 收集表单数据
-    // ajax要求的数据格式是： 键=值&键=值的形式
-    // let data = `userName=${userName}&password=${password}`;
-    // console.log(data);
-    // jqueyr给我们提供一个自动收集表单数据的功能，它的实现原理是根据表单里面的name属性，获取数据
-    let data = $('form').serialize();
-    // console.log(data);
-    // 发送ajajx请求
-    ajax({
-        type : 'post',
-        url : 'http://127.0.0.1:8080/doLogin',
-        data : data,
-        callback : function(res){
-            // console.log(res);
-            res = JSON.parse(res);
-            // 判断是否登录成
-            if(res.code === 200){
-                // 把用户的id存储到本地数据里面
-                localStorage.setItem('userId',res.userId);
-                alert('登录成功');
-                location.href = './index.html';
-            }else {
-                alert(res.msg);
+    // // 获取元素// 注册点击事件
+    // $('#login-btn').on('click',function(){
+    //     // 交互常识 如果一些必须填写的表单元素，在提交之前，要判断是否为空
+    //     let userName = $('#userName').val();
+    //     // 通常会在判断非空之前，先把空格去掉 - js里面的字符串对象提供了一个方法可以去除前后空格
+    //     if(userName.trim().length === 0){
+    //         // 提示用户
+    //         alert('用户名不能为空')
+    //         return;
+    //     }
+    //     let password = $('#password').val();
+    //     if(password.trim().length === 0){
+    //         alert('密码不能为空')
+    //         return;
+    //     }
+    // // $('#login-btn').on('click',function(){
+    // //     let userName = $('#userName').val();
+    // //     if(userName.trim().length === 0) {
+    // //         alert('用户名不能为空');
+    // //         return;
+    // //     }
+    // //     let password = $('#password').val();
+    // //     if(password.trim().length === 0) {
+    // //         alert('密码不能为空');
+    // //         return;
+    // //     }
+    //     // 收集表单数据
+    //     // ajax要求的数据格式是： 键=值&键=值的形式
+    //     // let data = `userName=${userName}&password=${password}`;
+    //     // console.log(data);
+    //     // jqueyr给我们提供一个自动收集表单数据的功能，它的实现原理是根据表单里面的name属性，获取数据
+    //     let data = $('form').serialize();
+    //     // console.log(data);
+    //     // 发送ajajx请求
+    //     ajax({
+    //         type : 'post',
+    //         url : 'http://127.0.0.1:8080/doLogin',
+    //         data : data,
+    //         callback : function(res){
+    //             // console.log(res);
+    //             res = JSON.parse(res);
+    //             // 判断是否登录成
+    //             if(res.code === 200){
+    //                 // 把用户的id存储到本地数据里面
+    //                 localStorage.setItem('userId',res.userId);
+    //                 alert('登录成功');
+    //                 location.href = './index.html';
+    //             }else {
+    //                 alert(res.msg);
+    //             }
+    //         }
+    //     })
+    //     });
+    
+    //     let data = $('from').serialize();
+    //     ajax({
+    //         type: 'post',
+    //         url: 'http://127.0.0.1:8080/doLogin',
+    //         data: data,
+    //         callback: function(res){
+    //             res = JSON.parse(res);
+    //             if(res.code===200) {
+    //                 localStorage.setItem('userId',res.userId);
+    //                 alert('登陆成功');
+    //                 location.href = './index.html'
+    //             }else{
+    //                 alert(res.msg);
+    //             }
+    //         }
+    //     })
+    // })
+
+
+
+
+
+
+    // 获取按钮 注册点击事件
+    $('#login-btn').on('click', function () {
+        // 判断非空
+        let userName = $('#userName').val();
+        let password = $('#password').val();
+        if (userName.trim().length === 0) {
+            alert('用户名不能为空');
+            return;
+        };
+        if (password.trim().length === 0) {
+            alert('密码不能为空');
+            return;
+        };
+
+        // 判断用户名或密码是否正确
+        // 先拿到表单内容 用serialize的方式 
+        let data = $('form').serialize();
+        // 引用ajax
+        ajax({
+            type: 'post',
+            url: 'http://127.0.0.1:8080/doLogin',
+            data: data,
+            callback: function (res) {
+                // 将res转换成js对象
+                res = JSON.parse(res);
+                // 判断code是否为200 是的话跳转到主页 不是的话提示用户密码或用户名不正确
+                if (res.code === 200) {
+                    localStorage.setItem('userId', res.userId);
+                    alert('登录成功');
+                    location.href = './index.html';
+                } else {
+                    alert(res.msg)
+                }
             }
-        }
+        });
     });
-})
 
 
 </script>
+
 </html>

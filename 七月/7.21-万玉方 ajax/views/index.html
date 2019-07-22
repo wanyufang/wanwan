@@ -79,9 +79,9 @@
 </body>
 <script src="../static/js/jquery.js"></script>
 <script src="../static/js/ajax.js"></script>
-<script>
+<!-- <script>
   /*
-    并不是谁都能看英雄数据的，必须先登录之后，但是登录是在登录页面实现的，现在已经到了主页了，主页并不知道层级是否登录过，需要再次去服务器进行验证
+    并不是谁都能看英雄数据的，必须先登录之后，但是登录是在登录页面实现的，现在已经到了主页了，主页并不知道曾经是否登录过，需要再次去服务器进行验证
     还是需要使用ajax进行登录的校验
       登录的校验需要一个用户的id，我们之前存储到了本地存储了，只需要读取出来，然后，发送ajax请求即可
   */
@@ -143,6 +143,60 @@
     });
 
   }
+</script> -->
+
+<script>
+  // 从本地存储中拿到用户ID
+  let userId = localStorage.getItem('userId');
+  // 判断该id是否在本地存储中 如果不在就返回登录界面
+  if (userId === false) {
+    alert('返回登陆');
+    location.href = './login.html';
+  } else {
+    // 如果本地存储中有该id 就要验证该用户近期是否登陆过 如果没有 则返回登陆界面重新登陆 如果有则加载界面
+    ajax({
+      // type: 'get',
+      url: 'http://127.0.0.1:8080/isLogin',
+      data: 'id=' + userId,
+      callback: function (res) {
+        // 转换格式
+        res = JSON.parse(res);
+        if (res.code === 200) {
+          // 把该隐藏的隐藏 把该显示的显示
+          $('.page-header a:last-child').attr('hidden', true);
+          $('.page-header a:nth-child(2),.hero-list a:first-child,table').removeAttr('hidden');
+          ajax({
+            type: 'post',
+            url: 'http://127.0.0.1:8080/getAllHero',
+            callback: function (res) {
+              res = JSON.parse(res);
+              if (res.code === 200) {
+                html = '';
+                res.data.forEach(e => {
+                  html += `<tr>
+            <td>${e.id}</td>
+            <td>${e.name}</td>
+            <td>${e.gender}</td>
+            <td><img src="../static/images/${e.img}"></td>
+            <td><a href="./edit.html?id=1">修改</a> 
+            <a data-id="1" href="javscript:void(0);">删除</a>
+            </td>
+          </tr>`
+                });
+                // 在遍历中生成结构
+                $('#tbody').html(html);
+              }
+            }
+          })
+        }else{
+          // 如果近期没有登陆过 则返回登录页面
+          alert('请返回登陆');
+          location.href = './login.html';
+        }       
+      }
+    })
+  }
+
 </script>
 
 </html>
