@@ -2,15 +2,15 @@
 const express = require('express');
 // 创建服务器
 const app = express();
-const fs = express('fs')
+const router = require('./router');
 // 绑定id和端口
 app.listen(8080, () => {
     console.log('http://127.0.0.1:8080')
 });
 
 // 处理静态资源
-app.use(express.static('views'));
-app.use(express.static('assets'));
+// app.use(express.static('views'));
+app.use('/assets', express.static('assets'));
 
 
 // // 设置pug为express的默认模板引擎
@@ -25,18 +25,4 @@ app.use(express.static('assets'));
 // ejs 先下载 之后设置ejs为express的默认的模板引擎
 app.set('view engine', 'ejs');
 // 也要准备一个默认模板引擎
-// 导入数据
-app.get('/index', (req, res) => {
-    // res.render('zzz',{name:'狗蛋',age:'12',gender:'男'})
-    fs.readFile('./data/heros.json', 'utf-8', (err, data) => {
-        if (err) console.log(err);
-        let arr = JSON.parse(data);
-        // 直接使用express里面提供的渲染模板的方法渲染数据
-        res.render('index', { arr });
-    })
-})
-
-// 使用app监听浏览器的请求
-// app.get('/',(req,res)=>{
-//     res.send('请求进入')
-// });
+app.use(router)
